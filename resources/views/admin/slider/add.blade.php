@@ -24,7 +24,7 @@
                 <div id="image_show">
 
                 </div>
-                <input type="hidden" name="thumb" id="file ">
+                <input type="hidden" name="thumb" id="thumb">
             </div>
 
 
@@ -53,3 +53,4 @@
         @csrf
     </form>
 @endsection
+

@@ -1,5 +1,5 @@
 @extends('admin.main')
-@extends('admin.head')
+
 @section('content')
     <table class="table">
         <thead>
@@ -42,3 +42,5 @@
         {!! $products->links() !!}
     </div>
 @endsection
+
+

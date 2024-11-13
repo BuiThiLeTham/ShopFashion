@@ -1,11 +1,11 @@
 @extends('admin.main')
-<meta name="csrf-token" content="{{ csrf_token() }}">
+
 @section('head')
     <script src="/ckeditor/ckeditor.js"></script>
 @endsection
 
 @section('content')
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST">
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
@@ -59,7 +59,7 @@
                 <div id="image_show">
 
                 </div>
-                <input type="hidden" name="thumb" id="file">
+                <input type="hidden" name="thumb" id="thumb">
             </div>
 
             <div class="form-group">

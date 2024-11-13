@@ -13,11 +13,9 @@ class MainController extends Controller
     protected $menu;
     protected $product;
 
-    public function __construct(
-        SliderService $slider,
-        MenuService $menu,
-        ProductService $product
-    ) {
+    public function __construct(SliderService $slider, MenuService $menu,
+        ProductService $product)
+    {
         $this->slider = $slider;
         $this->menu = $menu;
         $this->product = $product;
@@ -38,11 +36,11 @@ class MainController extends Controller
         $page = $request->input('page', 0);
         $result = $this->product->get($page);
         if (count($result) != 0) {
-            $html = view('products.list', ['products' => $result])->render();
+            $html = view('products.list', ['products' => $result ])->render();
 
-            return response()->json(['html' => $html]);
+            return response()->json([ 'html' => $html ]);
         }
 
-        return response()->json(['html' => '']);
+        return response()->json(['html' => '' ]);
     }
 }

@@ -57,12 +57,6 @@
 
 @section('footer')
     <script>
-    ClassicEditor
-        .create(document.querySelector('#content'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
-
-
+        CKEDITOR.replace('content');
+    </script>
 @endsection

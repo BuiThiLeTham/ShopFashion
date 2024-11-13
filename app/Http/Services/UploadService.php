@@ -9,7 +9,6 @@ class UploadService
     public function store($request)
     {
         if ($request->hasFile('file')) {
-
             try {
                 $name = $request->file('file')->getClientOriginalName();
                 $pathFull = 'uploads/' . date("Y/m/d");

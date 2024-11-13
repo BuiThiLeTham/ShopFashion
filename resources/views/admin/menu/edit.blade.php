@@ -10,7 +10,7 @@
 
             <div class="form-group">
                 <label for="menu">Tên Danh Mục</label>
-                <input type="text" name="name" value="{{ $menu->name  }}" class="form-control"  placeholder="Nhập tên danh mục">
+                <input type="text" name="name" value="{{ $menu->name }}" class="form-control"  placeholder="Nhập tên danh mục">
             </div>
 
             <div class="form-group">
@@ -62,12 +62,6 @@
 
 @section('footer')
     <script>
-    ClassicEditor
-        .create(document.querySelector('#content'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
-
-
+        CKEDITOR.replace('content');
+    </script>
 @endsection

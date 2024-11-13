@@ -36,8 +36,7 @@ class MenuService
                 'parent_id' => (int)$request->input('parent_id'),
                 'description' => (string)$request->input('description'),
                 'content' => (string)$request->input('content'),
-                'active' => (string)$request->input('active'),
-               
+                'active' => (string)$request->input('active')
             ]);
 
             Session::flash('success', 'Tạo Danh Mục Thành Công');

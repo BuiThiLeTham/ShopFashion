@@ -20,13 +20,13 @@
 
             <div class="form-group">
                 <label for="menu">Ảnh Sản Phẩm</label>
-                <input type="file" name="thumb" class="form-control" id="upload">
+                <input type="file"  class="form-control" id="upload">
                 <div id="image_show">
                     <a href="{{ $slider->thumb }}">
                         <img src="{{ $slider->thumb }}" width="100px">
                     </a>
                 </div>
-                <input type="hidden" name="thumb" value="{{ $slider->thumb }}" id="file">
+                <input type="hidden" name="thumb" value="{{ $slider->thumb }}" id="thumb">
             </div>
 
 
@@ -57,3 +57,4 @@
         @csrf
     </form>
 @endsection
+

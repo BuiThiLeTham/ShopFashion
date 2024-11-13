@@ -41,3 +41,5 @@
 
     {!! $sliders->links() !!}
 @endsection
+
+

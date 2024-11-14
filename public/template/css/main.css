@@ -97,6 +97,12 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   src: url('../fonts/Montserrat/Montserrat-Bold.ttf'); 
 }
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+}
+
+
 
 /*//////////////////////////////////////////////////////////////////
 [ RS PLUGIN ]*/
@@ -2177,7 +2183,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .stext-107 {
-  font-family: Poppins-Regular;
+  font-family: Roboto;
   font-size: 13px;
   line-height: 1.923;
 }

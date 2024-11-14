@@ -1,35 +1,35 @@
 
 <!-- Footer -->
-<footer class="bg3 p-t-75 p-b-32">
-    <div class="container">
+<footer class="bg3 p-t-75 p-b-32" >
+    <div class="container ">
         <div class="row">
             <div class="col-sm-6 col-lg-3 p-b-50">
                 <h4 class="stext-301 cl0 p-b-30">
-                    Categories
+                    Danh mục
                 </h4>
 
                 <ul>
                     <li class="p-b-10">
                         <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Women
+                            Nữ
                         </a>
                     </li>
 
                     <li class="p-b-10">
                         <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Men
+                            Nam
                         </a>
                     </li>
 
                     <li class="p-b-10">
                         <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Shoes
+                            Giày
                         </a>
                     </li>
 
                     <li class="p-b-10">
                         <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Watches
+                            Đồng hồ
                         </a>
                     </li>
                 </ul>
@@ -37,31 +37,31 @@
 
             <div class="col-sm-6 col-lg-3 p-b-50">
                 <h4 class="stext-301 cl0 p-b-30">
-                    Help
+                    Trợ giúp
                 </h4>
 
                 <ul>
                     <li class="p-b-10">
                         <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Track Order
+                            Theo dõi đơn hàng
                         </a>
                     </li>
 
                     <li class="p-b-10">
                         <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Returns
+                            Trả hàng
                         </a>
                     </li>
 
                     <li class="p-b-10">
                         <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Shipping
+                            Vận chuyển
                         </a>
                     </li>
 
                     <li class="p-b-10">
                         <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            FAQs
+                            Câu hỏi thường gặp
                         </a>
                     </li>
                 </ul>
@@ -69,13 +69,26 @@
 
             <div class="col-sm-6 col-lg-3 p-b-50">
                 <h4 class="stext-301 cl0 p-b-30">
-                    GET IN TOUCH
+                    LIÊN HỆ
                 </h4>
+                <ul>
+                    <li class="p-b-10">
+                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                        470 Trần Đại Nghĩa, Ngũ Hành Sơn, Đà Nẵng
+                        </a>
+                    </li>
 
-                <p class="stext-107 cl7 size-201">
-                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
-                </p>
-
+                    <li class="p-b-10">
+                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                        (+89) 398 389 726
+                        </a>
+                    </li>
+                    <li class="p-b-10">
+                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                        thambtl.23it@gmail.com
+                        </a>
+                    </li>
+                </ul>
                 <div class="p-t-27">
                     <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                         <i class="fa fa-facebook"></i>
@@ -93,7 +106,7 @@
 
             <div class="col-sm-6 col-lg-3 p-b-50">
                 <h4 class="stext-301 cl0 p-b-30">
-                    Newsletter
+                    Bản tin
                 </h4>
 
                 <form>
@@ -104,42 +117,35 @@
 
                     <div class="p-t-18">
                         <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-                            Subscribe
+                            Đăng ký
                         </button>
                     </div>
                 </form>
             </div>
         </div>
-
-        <div class="p-t-40">
+            <div class="p-t-40" >
             <div class="flex-c-m flex-w p-b-18">
                 <a href="#" class="m-all-1">
-                    <img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
+                    <img src="/template/images/icons/icon-pay-01.png" alt="ICON-PAY">
                 </a>
 
                 <a href="#" class="m-all-1">
-                    <img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
+                    <img src="/template/images/icons/icon-pay-02.png" alt="ICON-PAY">
                 </a>
 
                 <a href="#" class="m-all-1">
-                    <img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
+                    <img src="/template/images/icons/icon-pay-03.png" alt="ICON-PAY">
                 </a>
 
                 <a href="#" class="m-all-1">
-                    <img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
+                    <img src="/template/images/icons/icon-pay-04.png" alt="ICON-PAY">
                 </a>
 
                 <a href="#" class="m-all-1">
-                    <img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
+                    <img src="/template/images/icons/icon-pay-05.png" alt="ICON-PAY">
                 </a>
             </div>
-
-            <p class="stext-107 cl6 txt-center">
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
-            </p>
+            </div>
         </div>
     </div>
 </footer>
@@ -159,7 +165,7 @@
     <div class="container">
         <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
             <button class="how-pos3 hov3 trans-04 js-hide-modal1">
-                <img src="images/icons/icon-close.png" alt="CLOSE">
+                <img src="/template/images/icons/icon-close.png" alt="CLOSE">
             </button>
 
             <div class="row">
@@ -305,6 +311,15 @@
         </div>
     </div>
 </div>
+<div
+         class="text-center p-3 text-white"
+         style="background-color: rgba(0, 0, 0, 1)"
+         >
+      © 2024 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/"
+         >MDBootstrap.com</a
+        >
+    </div>
 
 <!--===============================================================================================-->
 <script src="/template/vendor/jquery/jquery-3.2.1.min.js"></script>

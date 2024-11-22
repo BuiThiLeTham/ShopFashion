@@ -7,12 +7,18 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\UserLoginController;
+use App\Http\Controllers\Admin\User01Controller;
 
 //Phần contact tách riêng
 Route::get('contact', [ContactController::class, 'contact'])->name('contact');
 
 Route::get('admin/users/login', [LoginController::class, 'index'])->name('login');
 Route::post('admin/users/login/store', [LoginController::class, 'store']);
+
+// Login routes for user01
+Route::get('user/login', [UserLoginController::class, 'index'])->name('user.login');
+Route::post('user/login/store', [UserLoginController::class, 'store']);
 
 Route::middleware(['auth'])->group(function () {
 
@@ -58,7 +64,43 @@ Route::middleware(['auth'])->group(function () {
         Route::get('customers', [\App\Http\Controllers\Admin\CartController::class, 'index']);
         Route::get('customers/view/{customer}', [\App\Http\Controllers\Admin\CartController::class, 'show']);
     });
+            // Routes phần user01
+            Route::prefix('admin/user01')->group(function () {
+                Route::get('/add', [User01Controller::class, 'create']);
+                Route::post('/add', [User01Controller::class, 'store']);
+Route::get('/edit/{id}', [User01Controller::class, 'update']);
+Route::post('/update/{id}', [User01Controller::class, 'update']);
+Route::post('/delete/{id}', [User01Controller::class, 'destroy']);
+Route::get('/list', [User01Controller::class, 'show']);
+
+                // Route::post('/add', [User01Controller::class, 'create']);
+                // Route::get('/edit/{id}', [User01Controller::class, 'update']);
+                // Route::post('/update/{id}', [User01Controller::class, 'update']);
+                // Route::post('/delete/{id}', [User01Controller::class, 'destroy']);
+                // Route::get('/list', [User01Controller::class, 'show']);
+
+
+                // Route::get('list', [SliderController::class, 'index']);
+                // Route::get('edit/{slider}', [SliderController::class, 'show']);
+                // Route::post('edit/{slider}', [SliderController::class, 'update']);
+                // Route::DELETE('destroy', [SliderController::class, 'destroy']);
+            });
+
+    // Route::prefix('admin/user01')->group(function () {
+    //     Route::get('/', [User01Controller::class, 'index'])->name('admin.user01.index');
+    //     Route::get('/edit/{id}', [User01Controller::class, 'edit'])->name('admin.user01.edit');
+    //     Route::post('/update/{id}', [User01Controller::class, 'update'])->name('admin.user01.update');
+    //     Route::post('/delete/{id}', [User01Controller::class, 'destroy'])->name('admin.user01.delete');
+    // });
 });
+// Route::middleware(['auth', 'admin'])->group(function () {
+//     Route::prefix('admin/user01')->group(function () {
+//         Route::get('/', [User01Controller::class, 'index'])->name('admin.user01.index');
+//         Route::get('/edit/{id}', [User01Controller::class, 'edit'])->name('admin.user01.edit');
+//         Route::post('/update/{id}', [User01Controller::class, 'update'])->name('admin.user01.update');
+//         Route::post('/delete/{id}', [User01Controller::class, 'destroy'])->name('admin.user01.delete');
+//     });
+// });
 
 Route::get('/', [App\Http\Controllers\MainController::class, 'index']);
 Route::post('/services/load-product', [App\Http\Controllers\MainController::class, 'loadProduct']);

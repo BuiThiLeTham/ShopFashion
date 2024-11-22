@@ -6,3 +6,31 @@ body, .main-menu > li > a, .ltext-102 {
 .hidden  {
     display: none !important;
 }
+/* Tăng kích thước và độ đậm cho chữ trong menu */
+.main-menu > li > a {
+    font-size: 16px;  /* Tăng kích thước chữ */
+    font-weight: bold; /* Làm chữ đậm */
+    color: #333;      /* Đặt màu chữ */
+    text-transform: uppercase; /* Viết hoa toàn bộ chữ nếu cần */
+  }
+  
+  .main-menu > li > a:hover {
+    text-decoration: none; /* Xóa gạch chân khi hover */
+  }
+
+.btn-custom {
+  background-color: #4CAF50; /* Màu xanh (green) */
+  color: #fff;              /* Màu chữ trắng */
+  border: none;             /* Xóa viền mặc định */
+  padding: 10px 15px;       /* Padding của button */
+  border-radius: 5px;       /* Bo góc button */
+  display: inline-block;    /* Đảm bảo button hiển thị đúng */
+  font-weight: bold;        /* Font chữ đậm */
+  text-align: center;       /* Canh giữa chữ */
+}
+
+.btn-custom:hover {
+  background-color: #45a049; /* Màu xanh đậm hơn khi hover */
+  color: #fff;               /* Màu chữ khi hover */
+  text-decoration: none;     /* Xóa gạch chân nếu là thẻ <a> */
+}

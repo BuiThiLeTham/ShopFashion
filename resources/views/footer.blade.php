@@ -317,7 +317,7 @@
          >
       © 2024 Copyright:
       <a class="text-white" href="https://mdbootstrap.com/"
-         >MDBootstrap.com</a
+         >MDBootstrap.com By Shop Xinh</a
         >
     </div>
 

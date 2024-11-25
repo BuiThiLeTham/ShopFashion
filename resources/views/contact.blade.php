@@ -72,7 +72,7 @@
 			        			<span class="fa fa-map-marker"></span>
 			        		</div>
 			        		<div class="text">
-				            <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+				            <p><span>Địa chỉ:</span> 470 Trần Đại Nghĩa Ngũ Hành Sơn Đà Nẵng</p>
 				          </div>
 			          </div>
 							</div>
@@ -82,7 +82,7 @@
 			        			<span class="fa fa-phone"></span>
 			        		</div>
 			        		<div class="text">
-				            <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+				            <p><span>Phone:</span> <a href="tel://1234567920">+ 0398389726</a></p>
 				          </div>
 			          </div>
 							</div>
@@ -92,7 +92,7 @@
 			        			<span class="fa fa-paper-plane"></span>
 			        		</div>
 			        		<div class="text">
-				            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+				            <p><span>Email:</span> <a href="mailto:info@yoursite.com">thambtl.23it@vku.udn.vn</a></p>
 				          </div>
 			          </div>
 							</div>
@@ -123,4 +123,3 @@
 
 	</body>
 </html>
-@include('footer')

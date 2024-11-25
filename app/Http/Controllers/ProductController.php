@@ -14,6 +14,21 @@ class ProductController extends Controller
         $this->productService = $productService;
     }
 
+    public function search(Request $request)
+{
+    $query = $request->input('query');
+    
+    // Tìm kiếm theo tên sản phẩm (hoặc tùy chỉnh theo yêu cầu)
+    $products = $this->productService->searchByName($query);
+
+    return view('products.search', [
+        'title' => 'Search Results',
+        'products' => $products,
+        'query' => $query
+    ]);
+}
+
+
     public function index($id = '', $slug = '')
     {
         $product = $this->productService->show($id);

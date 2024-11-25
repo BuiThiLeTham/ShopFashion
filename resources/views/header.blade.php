@@ -27,9 +27,9 @@
 
             <!-- Icon header và nút Đăng nhập -->
 <div class="wrap-icon-header flex-w flex-r-m">
-    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search" style="margin-right: 15px;">
+    <!-- <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search" style="margin-right: 15px;">
         <i class="zmdi zmdi-search"></i>
-    </div>
+    </div> -->
 
     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
          data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}" style="margin-right: 15px;">

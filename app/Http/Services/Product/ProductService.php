@@ -38,4 +38,9 @@ class ProductService
             ->limit(8)
             ->get();
     }
+    public function searchByName($query)
+{
+    return Product::where('name', 'LIKE', '%' . $query . '%')->paginate(10);
+}
+
 }

@@ -10,6 +10,17 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\Admin\User01Controller;
 use App\Http\Controllers\Admin\Users\RegisterController;
+use App\Http\Controllers\AuthController;
+
+
+// Route để đăng xuất
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+// Route trang chủ bán hàng
+Route::get('/', function () {
+    return view('welcome'); // Trang chủ bán hàng (thay bằng trang của bạn)
+});
+
 //Phần contact tách riêng
 Route::get('contact', [ContactController::class, 'contact'])->name('contact');
 

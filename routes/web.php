@@ -72,7 +72,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/store', [User01Controller::class, 'store'])->name('admin.user01.store'); // Lưu người dùng
         Route::get('/edit/{id}', [User01Controller::class, 'edit'])->name('admin.user01.edit');
         Route::post('/update/{id}', [User01Controller::class, 'update'])->name('admin.user01.update');
-        Route::post('/delete/{id}', [User01Controller::class, 'destroy'])->name('admin.user01.delete');
+        Route::DELETE('/destroy/{id}', [User01Controller::class, 'destroy'])->name('admin.user01.destroy');
+        Route::DELETE('/destroy/{id}', [User01Controller::class, 'destroy'])->name('admin.user01.destroy');
+        Route::DELETE('/destroy/{id}', [User01Controller::class, 'destroy'])->name('admin.user01.destroy');
+
+
         Route::get('/list', [User01Controller::class, 'index']);
     });
     

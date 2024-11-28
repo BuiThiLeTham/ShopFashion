@@ -24,7 +24,8 @@
                         <a class="btn btn-primary btn-sm" href="/admin/user01/edit/{{ $user->id }}">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a class="btn btn-danger btn-sm" href="#" onclick="removeRow({{ $user->id }}, '/admin/user01/destroy')">
+                        <a class="btn btn-danger btn-sm" href="#"
+                        onclick="removeRow({{ $user->id }}, '{{ route('admin.user01.destroy', '') }}')">
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>

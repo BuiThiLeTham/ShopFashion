@@ -68,25 +68,36 @@ class UserService
     }
 
     // Xóa người dùng
-    public function destroy($request)
-    {
-        try {
-            $user = User::where('id', $request->input('id'))->first();
+    // public function destroy($request)
+    // {
+    //     try {
+    //         $user = User::where('id', $request->input('id'))->first();
 
-            if ($user) {
-                $user->delete();
-                Session::flash('success', 'Xóa người dùng thành công');
-                return true;
-            }
-        } catch (\Exception $err) {
-            Session::flash('error', 'Xóa người dùng lỗi');
-            Log::error($err->getMessage());
+    //         if ($user) {
+    //             $user->delete();
+    //             Session::flash('success', 'Xóa người dùng thành công');
+    //             return true;
+    //         }
+    //     } catch (\Exception $err) {
+    //         Session::flash('error', 'Xóa người dùng lỗi');
+    //         Log::error($err->getMessage());
 
-            return false;
-        }
+    //         return false;
+    //     }
 
-        return false;
+    //     return false;
+    // }
+    public function destroy($id)
+{
+    $user = User::find($id);
+    if (!$user) {
+        return false; // Người dùng không tồn tại
     }
+
+    $user->delete();
+    return true; // Xóa thành công
+}
+
 
     // Lấy thông tin người dùng theo ID
     public function show($id)

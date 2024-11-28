@@ -39,8 +39,35 @@
     $('#myBtn').on("click", function(){
         $('html, body').animate({scrollTop: 0}, 300);
     });
+// Xóa người dùng
+function removeRow(userId, url) {
+    if (confirm("Bạn có chắc chắn muốn xóa người dùng này?")) {
+        $.ajax({
+            url: url + '/' + userId, // Cập nhật URL chính xác
+            type: 'DELETE',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content') // CSRF Token
+            },
+            success: function(response) {
+                if (!response.error) {
+                    alert(response.message); // Thông báo thành công
+                    // Xóa dòng khỏi bảng
+                    $('tr').filter(function() {
+                        return $(this).find('td').first().text() == userId;
+                    }).remove();
+                } else {
+                    alert('Lỗi khi xóa người dùng');
+                }
+            },
+            error: function(xhr, status, error) {
+                alert('Có lỗi xảy ra!');
+            }
+        });
+    }
+}
 
-
+    
+    
     /*==================================================================
     [ Fixed Header ]*/
     var headerDesktop = $('.container-menu-desktop');

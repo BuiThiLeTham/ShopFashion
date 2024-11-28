@@ -106,18 +106,20 @@ class User01Controller extends Controller
    }
 
     // Xóa người dùng
-    public function destroy(Request $request)
-    {
-        $result = $this->userService->destroy($request);
-        if ($result) {
-            return response()->json([
-                'error' => false,
-                'message' => 'Xóa thành công người dùng'
-            ]);
-        }
-
-        return response()->json(['error' => true]);
+    public function destroy($id)
+{
+    $user = User::find($id);
+    
+    if ($user) {
+        $user->delete();
+        return response()->json(['message' => 'Người dùng đã được xóa'], 200);
     }
+    
+    return response()->json(['error' => 'Không tìm thấy người dùng'], 404);
+}
+
+    
+
 }
 
 //     public function index()

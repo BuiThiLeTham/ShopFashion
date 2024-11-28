@@ -1455,7 +1455,7 @@
                     "name": "Colin O'Dell",
                     "email": "colinodell@gmail.com",
                     "homepage": "https://www.colinodell.com",
-                    "role": "Lead Developer"
+                    "roleid": "Lead Developer"
                 }
             ],
             "description": "Highly-extensible PHP Markdown parser which fully supports the CommonMark spec and GitHub-Flavored Markdown (GFM)",
@@ -1543,7 +1543,7 @@
                     "name": "Colin O'Dell",
                     "email": "colinodell@gmail.com",
                     "homepage": "https://www.colinodell.com",
-                    "role": "Lead Developer"
+                    "roleid": "Lead Developer"
                 }
             ],
             "description": "Define configuration arrays with strict schemas and access values with dot notation",
@@ -5128,7 +5128,7 @@
                 {
                     "name": "Tijs Verkoyen",
                     "email": "css_to_inline_styles@verkoyen.eu",
-                    "role": "Developer"
+                    "roleid": "Developer"
                 }
             ],
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
@@ -5691,7 +5691,7 @@
                     "name": "Freek Van der Herten",
                     "email": "freek@spatie.be",
                     "homepage": "https://flareapp.io",
-                    "role": "Developer"
+                    "roleid": "Developer"
                 }
             ],
             "description": "Solution contracts for Ignition",
@@ -5816,7 +5816,7 @@
                 {
                     "name": "Filipe Dobreira",
                     "homepage": "https://github.com/filp",
-                    "role": "Developer"
+                    "roleid": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -6070,19 +6070,19 @@
                     "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "https://github.com/padraic",
-                    "role": "Author"
+                    "roleid": "Author"
                 },
                 {
                     "name": "Dave Marshall",
                     "email": "dave.marshall@atstsolutions.co.uk",
                     "homepage": "https://davedevelopment.co.uk",
-                    "role": "Developer"
+                    "roleid": "Developer"
                 },
                 {
                     "name": "Nathanael Esayeas",
                     "email": "nathanael.esayeas@protonmail.com",
                     "homepage": "https://github.com/ghostwriter",
-                    "role": "Lead Developer"
+                    "roleid": "Lead Developer"
                 }
             ],
             "description": "Mockery is a simple yet flexible PHP mock object framework",
@@ -6296,17 +6296,17 @@
                 {
                     "name": "Arne Blankerts",
                     "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "roleid": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
                     "email": "sebastian@phpeople.de",
-                    "role": "Developer"
+                    "roleid": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de",
-                    "role": "Developer"
+                    "roleid": "Developer"
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
@@ -6353,17 +6353,17 @@
                 {
                     "name": "Arne Blankerts",
                     "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "roleid": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
                     "email": "sebastian@phpeople.de",
-                    "role": "Developer"
+                    "roleid": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de",
-                    "role": "Developer"
+                    "roleid": "Developer"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -6428,7 +6428,7 @@
                 {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "roleid": "lead"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -6490,7 +6490,7 @@
                 {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "roleid": "lead"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -6554,7 +6554,7 @@
                 {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "roleid": "lead"
                 }
             ],
             "description": "Invoke callables with a timeout",
@@ -6613,7 +6613,7 @@
                 {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "roleid": "lead"
                 }
             ],
             "description": "Simple template engine.",
@@ -6672,7 +6672,7 @@
                 {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "roleid": "lead"
                 }
             ],
             "description": "Utility class for timing",
@@ -6764,7 +6764,7 @@
                 {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "roleid": "lead"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -6834,7 +6834,7 @@
                 {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "roleid": "lead"
                 }
             ],
             "description": "Library for parsing CLI options",
@@ -6890,7 +6890,7 @@
                 {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "roleid": "lead"
                 }
             ],
             "description": "Collection of value objects that represent the PHP code units",
@@ -7076,7 +7076,7 @@
                 {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "roleid": "lead"
                 }
             ],
             "description": "Library for calculating the complexity of PHP code units",
@@ -7403,7 +7403,7 @@
                 {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "roleid": "lead"
                 }
             ],
             "description": "Library for counting the lines of code in PHP source code",
@@ -7688,7 +7688,7 @@
                 {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "roleid": "lead"
                 }
             ],
             "description": "Collection of value objects that represent the types of the PHP type system",
@@ -7741,7 +7741,7 @@
                 {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "roleid": "lead"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
@@ -7864,7 +7864,7 @@
                 {
                     "name": "Arne Blankerts",
                     "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "roleid": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",

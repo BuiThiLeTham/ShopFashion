@@ -13,16 +13,16 @@ class CreateUser01Table extends Migration
      */
     public function up()
 {
-    Schema::create('user01', function (Blueprint $table) {
-        $table->id();
-        $table->string('name');
-        $table->string('email')->unique();
-        $table->timestamp('email_verified_at')->nullable();
-        $table->string('password');
-        $table->string('role')->default('user'); // Phân quyền: admin/user
-        $table->rememberToken();
-        $table->timestamps();
-    });
+    // Schema::create('user01', function (Blueprint $table) {
+    //     $table->id();
+    //     $table->string('name');
+    //     $table->string('email')->unique();
+    //     $table->timestamp('email_verified_at')->nullable();
+    //     $table->string('password');
+    //     $table->string('role')->default('user'); // Phân quyền: admin/user
+    //     $table->rememberToken();
+    //     $table->timestamps();
+    // });
 }
 
 

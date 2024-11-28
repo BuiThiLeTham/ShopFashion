@@ -1,44 +1,46 @@
-@extends('admin.main')
 
 @section('content')
-    <form action="" method="POST">
-        <div class="card-body">
-            <div class="form-group">
-                <label for="name">Tên Người Dùng</label>
-                <input type="text" name="name" value="{{ $user->name }}" class="form-control" placeholder="Nhập tên người dùng">
-            </div>
-
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" value="{{ $user->email }}" class="form-control" placeholder="Nhập email">
-            </div>
-
-            <div class="form-group">
-                <label>Vai Trò</label>
-                <select name="role" class="form-control">
-                    <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>User</option>
-                    <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Kích Hoạt</label>
-                <div class="custom-control custom-radio">
-                    <input class="custom-control-input" value="1" type="radio" id="active"
-                           name="active" {{ $user->active == 1 ? 'checked=""' : '' }}>
-                    <label for="active" class="custom-control-label">Có</label>
-                </div>
-                <div class="custom-control custom-radio">
-                    <input class="custom-control-input" value="0" type="radio" id="no_active"
-                           name="active" {{ $user->active == 0 ? 'checked=""' : '' }}>
-                    <label for="no_active" class="custom-control-label">Không</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Cập Nhật Người Dùng</button>
-        </div>
+<div class="container mt-4">
+    <h2>{{ $title }}</h2>
+    <form method="POST" action="{{ route('admin.user01.update', $user?->id) }}">
         @csrf
+        <div class="mb-3">
+            <label for="name" class="form-label">Tên</label>
+            <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $user->name) }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $user->email) }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Mật khẩu mới (nếu thay đổi)</label>
+            <input type="password" name="password" id="password" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="password_confirmation" class="form-label">Xác nhận mật khẩu</label>
+            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="roleid" class="form-label">Quyền</label>
+            <select name="roleid" id="roleid" class="form-select" required>
+                <option value="1" {{ $user->roleid == 1 ? 'selected' : '' }}>Admin</option>
+                <option value="2" {{ $user->roleid == 2 ? 'selected' : '' }}>User</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="status" class="form-label">Trạng thái</label>
+            <select name="status" id="status" class="form-select" required>
+                <option value="1" {{ $user->status == 1 ? 'selected' : '' }}>Active</option>
+                <option value="0" {{ $user->status == 0 ? 'selected' : '' }}>Inactive</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
     </form>
+</div>
 @endsection

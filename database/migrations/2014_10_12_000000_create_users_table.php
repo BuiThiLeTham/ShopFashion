@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('status')->nullable(); 
+            $table->foreignId('roleid')->constrained('role');  // Tham chiếu đến bảng roles
         });
     }
 

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <form action="" method="POST">
+    <form  action="{{ route('admin.user01.store') }}" method="POST">
         <div class="card-body">
             <div class="form-group">
                 <label for="name">Tên Người Dùng</label>
@@ -24,13 +24,13 @@
 
             <div class="form-group">
                 <label>Vai Trò</label>
-                <select name="role" class="form-control">
-                    <option value="user">User</option>
-                    <option value="admin">Admin</option>
+                <select name="roleid" class="form-control">
+                    <option value="2">User</option>
+                    <option value="1">Admin</option>
                 </select>
             </div>
 
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label>Kích Hoạt</label>
                 <div class="custom-control custom-radio">
                     <input class="custom-control-input" value="1" type="radio" id="active" name="active" checked="">
@@ -40,7 +40,7 @@
                     <input class="custom-control-input" value="0" type="radio" id="no_active" name="active">
                     <label for="no_active" class="custom-control-label">Không</label>
                 </div>
-            </div> -->
+            </div>
         </div>
 
         <div class="card-footer">

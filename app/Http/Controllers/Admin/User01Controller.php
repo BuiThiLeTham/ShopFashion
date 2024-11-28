@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User01;
 use Illuminate\Http\Request;
 use App\Http\Services\User\UserService;
+use Illuminate\Support\Facades\Sessionession;
+use App\Models\User;
 class User01Controller extends Controller
 {
     protected $userService;
@@ -30,7 +32,7 @@ class User01Controller extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:6',
-            'role' => 'required|string|in:admin,user',
+            'roleid' => 'required|in:1,2',
         ]);
 
         $this->userService->insert($request);
@@ -48,30 +50,60 @@ class User01Controller extends Controller
     }
 
     // Hiển thị form chỉnh sửa người dùng
-    public function show(User01 $user)
+    // public function show(User01 $user)
+    // {
+    //     return view('admin.user01.edit', [
+    //         'title' => 'Chỉnh Sửa Người Dùng',
+    //         'user' => $user
+    //     ]);
+    // }
+    
+
+    // Hiển thị form chỉnh sửa
+    public function edit($id)
     {
+        $user = User::find($id);
+
+        if (!$user) {
+            Session::flash('error', 'Người dùng không tồn tại');
+            return redirect()->route('admin.user01.list');
+        }
+
         return view('admin.user01.edit', [
-            'title' => 'Chỉnh Sửa Người Dùng',
+            'title' => 'Chỉnh sửa người dùng',
             'user' => $user
         ]);
     }
-
     // Cập nhật thông tin người dùng
-    public function update(Request $request, User01 $user)
-    {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'nullable|string|min:6|confirmed',
-        ]);
+   // Cập nhật người dùng
+   public function update(Request $request, $id)
+   {
+       $user = User::find($id);
 
-        $result = $this->userService->update($request, $user);
-        if ($result) {
-            return redirect('/admin/user/list')->with('success', 'Cập nhật người dùng thành công.');
-        }
+       if (!$user) {
+           Session::flash('error', 'Người dùng không tồn tại');
+           return redirect()->route('admin.user01.list');
+       }
 
-        return redirect()->back()->with('error', 'Có lỗi xảy ra, vui lòng thử lại.');
-    }
+       $this->validate($request, [
+           'name' => 'required|string|max:255',
+           'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+           'password' => 'nullable|string|min:6|confirmed',
+           'roleid' => 'required',
+           'status' => 'required',
+       ]);
+
+       $data = $request->only(['name', 'email', 'roleid', 'status']);
+       if ($request->filled('password')) {
+           $data['password'] = Hash::make($request->password);
+       }
+
+       $user->fill($data);
+       $user->save();
+
+       Session::flash('success', 'Cập nhật người dùng thành công');
+       return redirect()->route('admin.user01.list');
+   }
 
     // Xóa người dùng
     public function destroy(Request $request)

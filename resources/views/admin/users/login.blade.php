@@ -266,7 +266,7 @@ form.onsubmit = (e)=>{
                 <div class="pass-txt"><a href="#">Quên Mật Khẩu</a></div>
                 <input type="submit" value="Login">
             </form>
-            <div class="sign-txt">    Chưa có tài khoản? <a href="#">Đăng ký</a></div>
+            <div class="sign-txt">    Chưa có tài khoản? <a href="{{route('register')}}">Đăng ký</a></div>
         </div>
         <!-- Image Section -->
         <div class="image-container">

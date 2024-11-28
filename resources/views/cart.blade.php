@@ -12,33 +12,42 @@
         </div>
 
         <div class="header-cart-content flex-w js-pscroll">
+            
             @php $sumPriceCart = 0; @endphp
-            <ul class="header-cart-wrapitem w-full">
-                @if (count($products) > 0)
-                    @foreach($products as $key => $product)
-                        @php
-                            $price = \App\Helpers\Helper::price($product->price, $product->price_sale);
-                            $sumPriceCart += $product->price_sale != 0 ? $product->price_sale : $product->price;
-                        @endphp
-                        <li class="header-cart-item flex-w flex-t m-b-12">
-                            <div class="header-cart-item-img">
-                                <img src="{{ $product->thumb }}" alt="IMG">
-                            </div>
+<ul class="header-cart-wrapitem w-full">
+    @if (session()->has('carts') && is_array(session('carts')) && count(session('carts')) > 0)
+        @php $products = session('carts'); @endphp
+        @foreach($products as $key => $product)
+            @if (is_array($product)) <!-- Kiểm tra `$product` là mảng -->
+                @php
+                    $price = \App\Helpers\Helper::price($product['price'], $product['price_sale']);
+                    $sumPriceCart += $product['price_sale'] != 0 ? $product['price_sale'] : $product['price'];
+                @endphp
+                <li class="header-cart-item flex-w flex-t m-b-12">
+                    <div class="header-cart-item-img">
+                        <img src="{{ $product['thumb'] }}" alt="IMG">
+                    </div>
 
-                            <div class="header-cart-item-txt p-t-8">
-                                <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                                    {{ $product->name }}
-                                </a>
+                    <div class="header-cart-item-txt p-t-8">
+                        <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                            {{ $product['name'] }}
+                        </a>
 
-                                <span class="header-cart-item-info">
-                                       {!! $price !!}
-                                </span>
-                            </div>
-                        </li>
-                    @endforeach
-                @endif
+                        <span class="header-cart-item-info">
+                            {!! $price !!}
+                        </span>
+                    </div>
+                </li>
+            @else
+                <!-- Nếu `$product` không phải là mảng, bỏ qua -->
+                @continue
+            @endif
+        @endforeach
+    @else
+        <p>Giỏ hàng hiện đang trống.</p>
+    @endif
+</ul>
 
-            </ul>
 
             <div class="w-full">
                 <div class="header-cart-total w-full p-tb-40">

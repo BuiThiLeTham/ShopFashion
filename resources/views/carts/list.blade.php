@@ -93,7 +93,7 @@
             
                             </div>
 
-                            <div class="flex-w flex-t bor12 p-t-15 p-b-30">
+                            <!-- <div class="flex-w flex-t bor12 p-t-15 p-b-30">
 
                                 <div class="size-100 p-r-18 p-r-0-sm w-full-ssm">
 
@@ -128,13 +128,13 @@
 
                             <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                                Đặt Hàng
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                 </div>
             </div>
     </form>
     @else
-        <div class="text-center"><h2>Giỏ hàng trống</h2></div>
+        <div class="text-center"><h2>Giỏ hàng trống</h2></div><br><br>
     @endif
 @endsection

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Services\Product\ProductService;
-
+use Illuminate\Support\Facades\Session;
 class ProductController extends Controller
 {
     protected $productService;
@@ -40,4 +40,10 @@ class ProductController extends Controller
             'products' => $productsMore
         ]);
     }
+
+    public function cart()
+{
+    $products = Session::get('carts', []); // Lấy giỏ hàng từ session, mặc định là mảng rỗng
+    return view('cart', compact('products'));
+}
 }

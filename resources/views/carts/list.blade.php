@@ -23,11 +23,20 @@
                                     </tr>
 
                                     @foreach($products as $key => $product)
-                                        @php
-                                            $price = $product->price_sale != 0 ? $product->price_sale : $product->price;
-                                            $priceEnd = $price * $carts[$product->id];
-                                            $total += $priceEnd;
-                                        @endphp
+    @php
+        // Kiểm tra xem $quantity có phải là số hay không
+        $quantity = (isset($carts[$product->id])) ? (int) $carts[$product->id] : 0;
+
+        // Lấy giá của sản phẩm từ thuộc tính 'price'
+        $price = $product->price;
+
+        // Tính tổng giá trị của sản phẩm
+        $priceEnd = $price * $quantity;
+        $total += $priceEnd;
+    @endphp
+
+
+
                                         <tr class="table_row">
                                             <td class="column-1">
                                                 <div class="how-itemcart1">
@@ -43,7 +52,7 @@
                                                     </div>
 
                                                     <input class="mtext-104 cl3 txt-center num-product" type="number"
-                                                           name="num_product[{{ $product->id }}]" value="{{ $carts[$product->id] }}">
+    name="num_product[{{ $product->id }}]" value="{{ $quantity }}">
 
                                                     <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                                         <i class="fs-16 zmdi zmdi-plus"></i>
@@ -61,8 +70,6 @@
                             </div>
 
                             <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
-                               
-
                                 <input type="submit" value="Update Cart" formaction="/update-cart"
                                     class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
                                 @csrf
@@ -89,10 +96,7 @@
                                     </span>
                                     <span> VND </span>
                                 </div>
-
-            
                             </div>
-
                             <!-- <div class="flex-w flex-t bor12 p-t-15 p-b-30">
 
                                 <div class="size-100 p-r-18 p-r-0-sm w-full-ssm">
@@ -135,6 +139,6 @@
             </div>
     </form>
     @else
-        <div class="text-center"><h2>Giỏ hàng trống</h2></div><br><br>
+        <div class="text-center"><h2>Giỏ hàng trống!</h2></div>
     @endif
 @endsection

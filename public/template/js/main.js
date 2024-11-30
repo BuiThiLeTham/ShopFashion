@@ -257,37 +257,6 @@ function removeRow(userId, url) {
         updateCartQuantity(numProductInput.data('product-id'), numProduct + 1); // Send updated quantity
     });
 
-    // Function to send Ajax request to update cart quantity
-    function updateCartQuantity(productId, quantity) {
-        $.ajax({
-            url: '/update-cart',  // Replace with your route
-            method: 'POST',
-            data: {
-                product_id: productId,
-                quantity: quantity,
-                _token: $('meta[name="csrf-token"]').attr('content') // CSRF token
-            },
-            success: function (data) {
-                if (data.success) {
-                    updateCartDisplay(data.cart);  // Update the cart display with new data
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Could not update cart'
-                    });
-                }
-            },
-            error: function () {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'An error occurred. Please try again!'
-                });
-            }
-        });
-    }
-
     // Function to update the cart display
     function updateCartDisplay(cart) {
         const cartItemsContainer = document.querySelector('.header-cart-wrapitem');
@@ -314,6 +283,81 @@ function removeRow(userId, url) {
 
         // Update the total price display
         document.querySelector('.header-cart-total').textContent = `Total: ${sumPriceCart.toLocaleString()}`;
+        document.getElementById('add-to-cart-btn').addEventListener('click', function (e) {
+            e.preventDefault();
+        
+            const form = document.getElementById('add-cart-form');
+            const formData = new FormData(form);
+        
+            fetch('/add-cart', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Cập nhật giỏ hàng bằng cách gọi hàm updateCartDisplay với dữ liệu mới
+                    updateCartDisplay(data.products);
+        
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Thành công',
+                        text: data.message,
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Lỗi',
+                        text: data.message
+                    });
+                }
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lỗi',
+                    text: 'Đã xảy ra lỗi, vui lòng thử lại!'
+                });
+                console.error('Error:', error);
+            });
+        });
+        
+        function updateCartDisplay(products) {
+            const cartItemsContainer = document.querySelector('.header-cart-wrapitem');
+            if (!cartItemsContainer) return;  // Kiểm tra xem có container giỏ hàng không
+        
+            cartItemsContainer.innerHTML = ''; // Xóa tất cả sản phẩm trong giỏ hàng hiện tại
+        
+            let sumPriceCart = 0;
+        
+            // Duyệt qua các sản phẩm trong giỏ và thêm vào giỏ
+            products.forEach(product => {
+                const price = product.price_sale != 0 ? product.price_sale : product.price;
+                sumPriceCart += price * product.qty; // Giả sử qty có trong dữ liệu
+        
+                const li = document.createElement('li');
+                li.className = 'header-cart-item flex-w flex-t m-b-12';
+                li.innerHTML = `
+                    <div class="header-cart-item-img">
+                        <img src="${product.thumb}" alt="IMG">
+                    </div>
+                    <div class="header-cart-item-txt p-t-8">
+                        <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">${product.name}</a>
+                        <span class="header-cart-item-info">${price}</span>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(li);
+            });
+        
+            // Cập nhật tổng tiền của giỏ hàng
+            document.querySelector('.header-cart-total').textContent = `Total: ${sumPriceCart.toLocaleString()}`;
+        }
+        
     }
     /*==================================================================
     [ Rating ]*/
@@ -367,9 +411,67 @@ function removeRow(userId, url) {
     $('.js-hide-modal1').on('click',function(){
         $('.js-modal1').removeClass('show-modal1');
     });
+
+
+    document.getElementById('add-to-cart-btn').addEventListener('click', function (e) {
+        e.preventDefault();
+    
+        const form = document.getElementById('add-cart-form');
+        const formData = new FormData(form);
+    
+        fetch('/add-cart', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Cập nhật giỏ hàng
+                updateCartDisplay(data.products);
+    
+                // Cập nhật số lượng thông báo trên biểu tượng giỏ hàng
+                updateCartIconNotification(data.products.length);
+    
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Thành công',
+                    text: data.message,
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lỗi',
+                    text: data.message
+                });
+            }
+        })
+        .catch(error => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Lỗi',
+                text: 'Đã xảy ra lỗi, vui lòng thử lại!'
+            });
+            console.error('Error:', error);
+        });
+    });
+    
+    // Hàm cập nhật số lượng thông báo trên biểu tượng giỏ hàng
+    function updateCartIconNotification(cartItemCount) {
+        const cartIcon = document.querySelector('.js-show-cart');
+        if (cartIcon) {
+            cartIcon.setAttribute('data-notify', cartItemCount);
+        }
+    }
+    
      /*==================================================================
     [ Add to Cart Button Event ]
     ===========================================================*/
+    
     document.getElementById('add-to-cart-btn').addEventListener('click', function (e) {
         e.preventDefault();
 

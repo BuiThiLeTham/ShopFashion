@@ -9,9 +9,9 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\Admin\User01Controller;
+use App\Http\Controllers\Admin\Users\ForgotPasswordController;
 use App\Http\Controllers\Admin\Users\RegisterController;
 use App\Http\Controllers\AuthController;
-
 
 // Route để đăng xuất
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
@@ -91,7 +91,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/list', [User01Controller::class, 'index']);
     });
     
-
+    Route::middleware('guest')->group(function () {
+        Route::get('forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])
+            ->name('password.request');
+        Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLink'])
+            ->name('password.email');
+        Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])
+            ->name('password.reset');
+        Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])
+            ->name('password.update');
+    });
 
 Route::get('/', [App\Http\Controllers\MainController::class, 'index']);
 Route::post('/services/load-product', [App\Http\Controllers\MainController::class, 'loadProduct']);
@@ -106,7 +115,7 @@ Route::post('update-cart', [App\Http\Controllers\CartController::class, 'update'
 Route::get('carts/delete/{id}', [App\Http\Controllers\CartController::class, 'remove']);
 Route::post('carts', [App\Http\Controllers\CartController::class, 'addCart']);
 // Route::post('add-cart', [App\Http\Controllers\CartController::class, 'addCart']);
-Route::post('add-cart', [App\Http\Controllers\CartController::class, 'add']);
+Route::post('add-cart', [App\Http\Controllers\CartController::class, 'addCart']);
 
 // Phần đăng kí
 Route::get('admin/users/register', [RegisterController::class, 'index'])->name('register');

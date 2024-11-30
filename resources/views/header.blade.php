@@ -1,5 +1,7 @@
 <header>
 <link rel="stylesheet" href="{{ asset('/template/css/style.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     @php $menusHtml = \App\Helpers\Helper::menus($menus); @endphp
     <!-- Header desktop -->
     <div class="container-menu-desktop">
@@ -32,9 +34,10 @@
     </div> -->
 
     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-         data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}" style="margin-right: 15px;">
-        <i class="zmdi zmdi-shopping-cart"></i>
-    </div>
+     data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}" style="margin-right: 15px;">
+    <i class="zmdi zmdi-shopping-cart"></i>
+</div>
+
 
     <!-- Nút Đăng nhập -->
     <a href="{{ route('login') }}" class="btn-custom">

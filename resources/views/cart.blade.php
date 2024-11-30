@@ -14,37 +14,30 @@
         <div class="header-cart-content flex-w js-pscroll">
             
             @php $sumPriceCart = 0; @endphp
-<ul class="header-cart-wrapitem w-full">
+            <ul class="header-cart-wrapitem w-full">
     @if (session()->has('carts') && is_array(session('carts')) && count(session('carts')) > 0)
-        @php $products = session('carts'); @endphp
-        @foreach($products as $key => $product)
-            @if (is_array($product)) <!-- Kiểm tra `$product` là mảng -->
-                @php
-                    $price = \App\Helpers\Helper::price($product['price'], $product['price_sale']);
-                    $sumPriceCart += $product['price_sale'] != 0 ? $product['price_sale'] : $product['price'];
-                @endphp
-                <li class="header-cart-item flex-w flex-t m-b-12">
-                    <div class="header-cart-item-img">
-                        <img src="{{ $product['thumb'] }}" alt="IMG">
-                    </div>
-
-                    <div class="header-cart-item-txt p-t-8">
-                        <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                            {{ $product['name'] }}
-                        </a>
-
-                        <span class="header-cart-item-info">
-                            {!! $price !!}
-                        </span>
-                    </div>
-                </li>
-            @else
-                <!-- Nếu `$product` không phải là mảng, bỏ qua -->
-                @continue
-            @endif
+        @foreach(session('carts') as $key => $product)
+            @php
+                $price = $product['price_sale'] > 0 ? $product['price_sale'] : $product['price'];
+            @endphp
+            <li class="header-cart-item flex-w flex-t m-b-12">
+                <div class="header-cart-item-img">
+                    <img src="{{ $product['thumb'] }}" alt="IMG">
+                </div>
+                <div class="header-cart-item-txt p-t-8">
+                    <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                        {{ $product['name'] }}
+                    </a>
+                    <span class="header-cart-item-info">
+                        {{ $product['qty'] }} x {{ number_format($price, 0, ',', '.') }} VNĐ
+                    </span>
+                </div>
+            </li>
         @endforeach
     @else
-        <p>Giỏ hàng hiện đang trống.</p>
+        <li class="header-cart-item flex-w flex-t m-b-12">
+            <span>Giỏ hàng của bạn đang trống.</span>
+        </li>
     @endif
 </ul>
 

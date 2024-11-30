@@ -263,7 +263,7 @@ form.onsubmit = (e)=>{
                         <i class="icon fas fa-lock"></i>
                     </div>
                 </div>
-                <div class="pass-txt"><a href="#">Quên Mật Khẩu</a></div>
+                <div class="pass-txt"><a href="{{route('password.request')}}">Quên Mật Khẩu</a></div>
                 <input type="submit" value="Login">
             </form>
             <div class="sign-txt">    Chưa có tài khoản? <a href="{{route('register')}}">Đăng ký</a></div>

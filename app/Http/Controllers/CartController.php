@@ -102,16 +102,16 @@ public function addCart(Request $request) {
         return response()->json(['success' => false, 'message' => 'Thêm sản phẩm vào giỏ hàng thất bại!']);
     }
 
-    // Optionally, return the updated cart items for display
-    $carts = Session::get('carts', []);
+    // Lấy các sản phẩm trong giỏ hàng và trả về dữ liệu
     $products = $this->cartService->getProduct();
 
     return response()->json([
         'success' => true,
         'message' => 'Thêm giỏ hàng thành công!',
-        'products' => $products, // Send back the updated cart products
+        'products' => $products, // Gửi lại danh sách sản phẩm mới trong giỏ hàng
     ]);
 }
+
 public function updateCart(Request $request)
 {
     $productId = $request->input('product_id');

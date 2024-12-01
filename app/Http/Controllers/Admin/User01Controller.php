@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Http\Services\User\UserService;
 use Illuminate\Support\Facades\Sessionession;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+
 class User01Controller extends Controller
 {
     protected $userService;

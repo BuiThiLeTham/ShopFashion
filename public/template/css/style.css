@@ -13,24 +13,38 @@ body, .main-menu > li > a, .ltext-102 {
     color: #333;      /* Đặt màu chữ */
     text-transform: uppercase; /* Viết hoa toàn bộ chữ nếu cần */
   }
-  
+  /*xong r chạy thử xem  */
   .main-menu > li > a:hover {
     text-decoration: none; /* Xóa gạch chân khi hover */
+   
+    outline-color: rgba(72, 22, 22, 0.647);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 2px #427388; 
+    background-color: rgb(244, 239, 232);
   }
 
 .btn-custom {
-  background-color: #4CAF50; /* Màu xanh (green) */
+  background-image: linear-gradient(135deg, #feb692 0%, #ea5455 100%);
   color: #fff;              /* Màu chữ trắng */
   border: none;             /* Xóa viền mặc định */
   padding: 10px 15px;       /* Padding của button */
-  border-radius: 5px;       /* Bo góc button */
+  border-radius: 10px;       /* Bo góc button */
   display: inline-block;    /* Đảm bảo button hiển thị đúng */
   font-weight: bold;        /* Font chữ đậm */
   text-align: center;       /* Canh giữa chữ */
+  box-shadow: 0 3px 5px 3px rgba(240, 122, 116, 0.5);
+}
+
+.btn-custom {
+  transition: all 0.3s ease-in-out;
+  font-family: "Dosis", sans-serif;
 }
 
 .btn-custom:hover {
-  background-color: #45a049; /* Màu xanh đậm hơn khi hover */
-  color: #fff;               /* Màu chữ khi hover */
-  text-decoration: none;     /* Xóa gạch chân nếu là thẻ <a> */
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+.btn-custom :active {
+  opacity: 0.5;
 }

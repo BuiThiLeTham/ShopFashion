@@ -16,6 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    
     protected $fillable = [
         'name',
         'email',
@@ -23,7 +24,10 @@ class User extends Authenticatable
         'roleid',
         'status',
     ];
-
+public function role()
+    {
+        return $this->belongsTo(Role::class, 'roleid');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -33,6 +37,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    
 
     /**
      * The attributes that should be cast to native types.

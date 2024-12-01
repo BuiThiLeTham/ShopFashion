@@ -7,18 +7,44 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\UserLoginController;
+use App\Http\Controllers\Admin\Users\UserLoginController;
 use App\Http\Controllers\Admin\User01Controller;
 use App\Http\Controllers\Admin\Users\RegisterController;
-//Phần contact tách riêng
-Route::get('contact', [ContactController::class, 'contact'])->name('contact');
+use App\Http\Controllers\Admin\Users\ForgotPasswordController;
+use App\Http\Controllers\HomeController;
+
+use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Password;
 
 Route::get('admin/users/login', [LoginController::class, 'index'])->name('login');
 Route::post('admin/users/login/store', [LoginController::class, 'store']);
 
+Route::middleware('guest')->group(function () {
+    Route::get('forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])
+    ->name('password.request');
+    // Route::get('home', [ForgotPasswordController::class, 'showForgotPasswordForm'])
+    // ->name('password.request');
+    Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLink'])
+    ->name('password.email');
+    Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])
+    ->name('password.reset');
+    Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])
+    ->name('password.update');
+});
+// Route để đăng xuất
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+//Phần contact tách riêng
+Route::get('contact', [ContactController::class, 'contact'])->name('contact');
+
+Route::get('admin/users/register', [RegisterController::class, 'index'])->name('register');
+Route::post('admin/users/register', [RegisterController::class, 'register']);
+
 // Login routes for user01
-Route::get('user/login', [UserLoginController::class, 'index'])->name('user.login');
-Route::post('user/login/store', [UserLoginController::class, 'store']);
+// Route::get('user/login', [UserLoginController::class, 'index'])->name('user.login');
+// Route::post('user/login/store', [UserLoginController::class, 'store']);
+
+
 
 Route::middleware(['auth'])->group(function () {
 
@@ -63,10 +89,10 @@ Route::middleware(['auth'])->group(function () {
         // Routes phần Cart
         Route::get('customers', [\App\Http\Controllers\Admin\CartController::class, 'index']);
         Route::get('customers/view/{customer}', [\App\Http\Controllers\Admin\CartController::class, 'show']);
-    });
+    
 
 
-    Route::prefix('admin/user01')->group(function () {
+        Route::prefix('admin/user01')->group(function () {
         Route::get('/', [User01Controller::class, 'index'])->name('admin.user01.index');
         Route::get('/add', [User01Controller::class, 'create']); // Hiển thị form thêm người dùng
         Route::post('/store', [User01Controller::class, 'store'])->name('admin.user01.store'); // Lưu người dùng
@@ -76,14 +102,16 @@ Route::middleware(['auth'])->group(function () {
         Route::DELETE('/destroy/{id}', [User01Controller::class, 'destroy'])->name('admin.user01.destroy');
         Route::DELETE('/destroy/{id}', [User01Controller::class, 'destroy'])->name('admin.user01.destroy');
 
-
         Route::get('/list', [User01Controller::class, 'index']);
+
     });
+    });
+    
     
 
 
-Route::get('/', [App\Http\Controllers\MainController::class, 'index']);
-Route::post('/services/load-product', [App\Http\Controllers\MainController::class, 'loadProduct']);
+Route::get('/', [HomeController::class, 'index'])->name('home1');
+Route::post('/services/load-product', [HomeController::class, 'loadProduct']);
 
 Route::get('danh-muc/{id}-{slug}.html', [App\Http\Controllers\MenuController::class, 'index']);
 Route::get('san-pham/{id}-{slug}.html', [App\Http\Controllers\ProductController::class, 'index']);
@@ -97,7 +125,6 @@ Route::post('carts', [App\Http\Controllers\CartController::class, 'addCart']);
 // Route::post('add-cart', [App\Http\Controllers\CartController::class, 'addCart']);
 Route::post('add-cart', [App\Http\Controllers\CartController::class, 'add']);
 
-// Phần đăng kí
-Route::get('admin/users/register', [RegisterController::class, 'index'])->name('register');
-Route::post('admin/users/register', [RegisterController::class, 'register']);
+
+
 });

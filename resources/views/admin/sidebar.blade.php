@@ -1,3 +1,53 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('user-name').addEventListener('click', function() {
+            var userOptions = document.getElementById('user-options');
+            // Kiểm tra trạng thái hiện tại, nếu đang ẩn thì hiển thị, nếu đang hiển thị thì ẩn
+            if (userOptions.style.display === 'none') {
+                userOptions.style.display = 'block';
+            } else {
+                userOptions.style.display = 'none';
+            }
+        });
+    });
+</script>
+<style>
+   #user-options {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    text-align: center; /* Căn giữa tất cả các mục trong danh sách */
+}
+
+#user-options .nav-item, .nav-link {
+    border-top: 1px solid #ccc; /* Thêm đường viền giữa các mục */
+}
+
+#user-options .nav-link {
+    padding: 10px;
+    text-decoration: none;
+    color: #ffffff; /* Màu chữ trắng */
+    background-color: #343a40; /* Màu nền tối cho các mục */
+    border-radius: 5px;
+    display: block;
+    margin: 5px auto; /* Căn giữa và có khoảng cách giữa các mục */
+    width: 100%; /* Điều chỉnh chiều rộng của các mục */
+}
+
+#user-options .nav-link:hover {
+    background-color: #007bff; /* Màu nền khi hover */
+    color: #fff; /* Màu chữ khi hover */
+}
+#user-options .nav-link button {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    padding: 0;
+    cursor: pointer;
+}
+
+</style>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/admin" class="brand-link">
@@ -14,8 +64,28 @@
                 <img src="/template/images/avatar-01.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Admin Account</a>
-            </div>
+    <a href="#" class="d-block" id="user-name">
+        {{ Auth::user()->name }} <!-- Hiển thị tên người dùng đã đăng nhập -->
+    </a>
+    <ul class="nav nav-treeview" id="user-options" style="display: none;">
+    <li class="nav-item">
+            <!-- Chuyển đến Website -->
+            <a href="http://127.0.0.1:8000" class="nav-link">   
+                Website
+            </a>
+        </li>
+        <li class="nav-item">
+            <!-- Đăng xuất -->
+            <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                @csrf
+                <button type="submit" class="nav-link">
+                    Đăng Xuất
+                </button>
+            </form>
+        </li>
+        
+    </ul>
+</div>
         </div>
 
         <!-- SidebarSearch Form -->

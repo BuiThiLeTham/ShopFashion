@@ -7,7 +7,7 @@ use App\Http\Services\Slider\SliderService;
 use App\Http\Services\Menu\MenuService;
 use App\Http\Services\Product\ProductService;
 
-class MainController extends Controller
+class HomeController extends Controller
 {
     protected $slider;
     protected $menu;

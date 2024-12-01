@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Users;
+
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +12,7 @@ class UserLoginController extends Controller
 {
     public function index()
     {
-        return view('user.login', [
+        return view('admin.user.login', [
             'title' => 'Đăng Nhập Người Dùng'
         ]);
     }

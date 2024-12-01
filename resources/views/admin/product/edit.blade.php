@@ -31,6 +31,7 @@
             </div>
 
             <div class="row">
+                
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="menu">Giá Gốc</label>
@@ -45,6 +46,13 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="menu">Số lượng</label>
+                        <input type="number" name="quantity" value="{{ $product->quantity }}"  class="form-control" >
+                    </div>
+                </div>
 
             <div class="form-group">
                 <label>Mô Tả </label>

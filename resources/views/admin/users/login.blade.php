@@ -190,7 +190,41 @@ form input[type="submit"]:hover{
   background: #2c52ed;
 }
   </style>
-  {{-- <script>
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form -->
+        <div class="wrapper">
+            <header>Đăng Nhập</header>
+            @include('admin.alert')
+            <form action="/admin/users/login/store" method="post">
+                @csrf
+                <div class="field email">
+                    <div class="input-area">
+                        <input type="email" name="email" placeholder="Email Address">
+                        <i class="icon fas fa-envelope"></i>
+                    </div>
+                </div>
+                <div class="field password">
+                    <div class="input-area">
+                        <input type="password" name="password" placeholder="Password">
+                        <i class="icon fas fa-lock"></i>
+                    </div>
+                </div>
+                <div class="pass-txt"><a href="{{route('password.request')}}">Quên Mật Khẩu</a></div>
+                <input type="submit" value="Login">
+            </form>
+            <div class="sign-txt">    Chưa có tài khoản? <a href="{{route('register')}}">Đăng ký</a></div>
+        </div>
+        <!-- Image Section -->
+        <div class="image-container">
+            <img src="/template/images/bglogin.png" alt="Placeholder Image">
+        </div>
+    </div>
+
+     <script>
     const form = document.querySelector("form");
     eField = form.querySelector(".email"),
     eInput = eField.querySelector("input"),
@@ -236,42 +270,11 @@ form input[type="submit"]:hover{
       }
 
       //if eField and pField doesn't contains error class that mean user filled details properly
-      if(!eField.classList.contains("error") && !pField.classList.contains("error")){
-        window.location.href = form.getAttribute("action"); //redirecting user to the specified url which is inside action attribute of form tag
-      }
+      if (!eField.classList.contains("error") && !pField.classList.contains("error")) {
+  form.submit(); // Gửi form với phương thức POST
+}
+
     }
-  </script> --}}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-</head>
-<body>
-    <div class="container">
-        <!-- Login Form -->
-        <div class="wrapper">
-            <header>Đăng Nhập</header>
-            @include('admin.alert')
-            <form action="/admin/users/login/store" method="post">
-                @csrf
-                <div class="field email">
-                    <div class="input-area">
-                        <input type="email" name="email" placeholder="Email Address">
-                        <i class="icon fas fa-envelope"></i>
-                    </div>
-                </div>
-                <div class="field password">
-                    <div class="input-area">
-                        <input type="password" name="password" placeholder="Password">
-                        <i class="icon fas fa-lock"></i>
-                    </div>
-                </div>
-                <div class="pass-txt"><a href="{{route('password.request')}}">Quên Mật Khẩu</a></div>
-                <input type="submit" value="Login">
-            </form>
-            <div class="sign-txt">    Chưa có tài khoản? <a href="{{route('register')}}">Đăng ký</a></div>
-        </div>
-        <!-- Image Section -->
-        <div class="image-container">
-            <img src="/template/images/bglogin.png" alt="Placeholder Image">
-        </div>
-    </div>
+  </script>
 </body>
 </html>

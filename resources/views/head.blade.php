@@ -35,5 +35,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap&subset=vietnamese">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 <meta name="csrf-token" content="{{ csrf_token() }}">

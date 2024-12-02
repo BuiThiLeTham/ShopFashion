@@ -117,7 +117,6 @@ Route::post('carts', [App\Http\Controllers\CartController::class, 'addCart']);
 
 
 
-
 // Phần đăng kí
 Route::get('admin/users/register', [RegisterController::class, 'index'])->name('register');
 Route::post('admin/users/register', [RegisterController::class, 'register']);

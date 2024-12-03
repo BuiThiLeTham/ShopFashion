@@ -24,8 +24,10 @@
                         <a class="btn btn-primary btn-sm" href="/admin/user01/edit/{{ $user->id }}">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a class="btn btn-danger btn-sm" href="#"
-                        onclick="removeRow({{ $user->id }}, '{{ route('admin.user01.destroy', '') }}')">
+                         <!-- Form for delete -->
+                         <a class="btn btn-danger btn-sm"
+                            href="#"
+                            onclick="removeRow({{ $user->id }}, '{{ route('admin.user01.destroy', ['id' => $user->id]) }}')">
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>
@@ -33,4 +35,5 @@
             @endforeach
         </tbody>
     </table>
+    {!! $users->links() !!}
 @endsection

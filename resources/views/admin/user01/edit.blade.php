@@ -1,8 +1,9 @@
+@extends('admin.main')
 
 @section('content')
 <div class="container mt-4">
     <h2>{{ $title }}</h2>
-    <form method="POST" action="{{ route('admin.user01.update', $user?->id) }}">
+    <form method="POST" action="{{  route('admin.user01.update', $user?->id) }}">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Tên</label>
@@ -39,7 +40,7 @@
                 <option value="0" {{ $user->status == 0 ? 'selected' : '' }}>Inactive</option>
             </select>
         </div>
-
+        @csrf
         <button type="submit" class="btn btn-primary">Cập nhật</button>
     </form>
 </div>

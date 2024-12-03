@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User01;
 use Illuminate\Http\Request;
 use App\Http\Services\User\UserService;
-use Illuminate\Support\Facades\Sessionession;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
 class User01Controller extends Controller
 {
@@ -75,86 +75,45 @@ class User01Controller extends Controller
         ]);
     }
     // Cập nhật thông tin người dùng
-   // Cập nhật người dùng
-   public function update(Request $request, $id)
-   {
-       $user = User::find($id);
-
-       if (!$user) {
-           Session::flash('error', 'Người dùng không tồn tại');
-           return redirect()->route('admin.user01.list');
-       }
-
-       $this->validate($request, [
-           'name' => 'required|string|max:255',
-           'email' => 'required|string|email|max:255|unique:users,email,' . $id,
-           'password' => 'nullable|string|min:6|confirmed',
-           'roleid' => 'required',
-           'status' => 'required',
-       ]);
-
-       $data = $request->only(['name', 'email', 'roleid', 'status']);
-       if ($request->filled('password')) {
-           $data['password'] = Hash::make($request->password);
-       }
-
-       $user->fill($data);
-       $user->save();
-
-       Session::flash('success', 'Cập nhật người dùng thành công');
-       return redirect()->route('admin.user01.list');
-   }
-
-    // Xóa người dùng
-    public function destroy($id)
+public function update(Request $request, $id)
 {
     $user = User::find($id);
-    
-    if ($user) {
-        $user->delete();
-        return response()->json(['message' => 'Người dùng đã được xóa'], 200);
+
+    if (!$user) {
+        Session::flash('error', 'Người dùng không tồn tại.');
+        return redirect()->route('admin.user01.list');
     }
-    
-    return response()->json(['error' => 'Không tìm thấy người dùng'], 404);
+
+    $this->validate($request, [
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $id,
+        'roleid' => 'required|in:1,2',
+    ]);
+
+    $user->update($request->all());
+    Session::flash('success', 'Cập nhật người dùng thành công.');
+    return redirect()->route('admin.user01.list');
 }
 
-    
+    // Xóa người dùng
+public function destroy($id)
+{
+    $user = User::find($id);
 
+    if (!$user) {
+        return response()->json([
+            'error' => true,
+            'message' => 'Người dùng không tồn tại.'
+        ]);
+    }
+
+    $user->delete();
+
+    return response()->json([
+        'error' => false,
+        'message' => 'Xóa người dùng thành công.'
+    ]);
 }
 
-//     public function index()
-//     {
-//         $users = User01::all();
-//         $title = 'Trang chủ quản trị';
-//         return view('admin.user01.add', compact('users'),  [
-//             'title' => 'Thêm Người Dùng'
-//         ]);
-//     }
 
-//     public function edit($id)
-//     {
-//         $user = User01::findOrFail($id);
-//         return view('admin.user01.edit', compact('user'));
-//     }
-
-//     public function update(Request $request, $id)
-//     {
-//         $user = User01::findOrFail($id);
-
-//         $this->validate($request, [
-//             'name' => 'required|string|max:255',
-//             'email' => 'required|email|unique:user01,email,' . $id,
-//             'role' => 'required|in:admin,user', // Ví dụ phân quyền
-//         ]);
-
-//         $user->update($request->only('name', 'email', 'role'));
-//         return redirect()->route('admin.user01.index')->with('success', 'Cập nhật thành công');
-//     }
-
-//     public function destroy($id)
-//     {
-//         $user = User01::findOrFail($id);
-//         $user->delete();
-//         return redirect()->route('admin.user01.index')->with('success', 'Xóa thành công');
-//     }
-// }
+}

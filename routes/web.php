@@ -84,11 +84,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit/{id}', [User01Controller::class, 'edit'])->name('admin.user01.edit');
         Route::post('/update/{id}', [User01Controller::class, 'update'])->name('admin.user01.update');
         Route::DELETE('/destroy/{id}', [User01Controller::class, 'destroy'])->name('admin.user01.destroy');
-        Route::DELETE('/destroy/{id}', [User01Controller::class, 'destroy'])->name('admin.user01.destroy');
-        Route::DELETE('/destroy/{id}', [User01Controller::class, 'destroy'])->name('admin.user01.destroy');
-
-
-        Route::get('/list', [User01Controller::class, 'index']);
+        Route::get('/list', [User01Controller::class, 'index'])->name('admin.user01.list');
     });
     
     Route::middleware('guest')->group(function () {

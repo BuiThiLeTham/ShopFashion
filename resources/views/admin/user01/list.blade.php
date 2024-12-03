@@ -19,7 +19,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->roleid }}</td>
-                    <td>{!! $user->active == 1 ? '<span class="badge badge-success">Có</span>' : '<span class="badge badge-danger">Không</span>' !!}</td>
+                    <td>{!! $user->status == 1 ? '<span class="badge badge-success">Có</span>' : '<span class="badge badge-danger">Không</span>' !!}</td>
                     <td>
                         <a class="btn btn-primary btn-sm" href="/admin/user01/edit/{{ $user->id }}">
                             <i class="fas fa-edit"></i>

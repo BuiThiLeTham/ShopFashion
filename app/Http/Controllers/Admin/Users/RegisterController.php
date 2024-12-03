@@ -26,7 +26,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'status' => '1',  // Gán giá trị cho trường status (mặc định là 'active')
+          
         ]);
 
         $user = User::create([

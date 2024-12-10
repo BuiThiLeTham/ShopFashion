@@ -18,49 +18,43 @@ class CartService
     {
         $qty = (int)$request->input('num_product');
         $product_id = (int)$request->input('product_id');
-    
+
         if ($qty <= 0 || $product_id <= 0) {
             Session::flash('error', 'Số lượng hoặc Sản phẩm không chính xác');
             return false;
         }
-    
-        $product = Product::find($product_id); // Lấy thông tin sản phẩm
-        if (!$product) {
-            Session::flash('error', 'Sản phẩm không tồn tại!');
-            return false;
+
+        $carts = Session::get('carts');
+        if (is_null($carts)) {
+            Session::put('carts', [
+                $product_id => $qty
+            ]);
+            return true;
         }
-    
-        $carts = Session::get('carts', []); 
+
         $exists = Arr::exists($carts, $product_id);
-    
         if ($exists) {
-            $carts[$product_id]['qty'] += $qty; // Tăng số lượng của sản phẩm
-        } else {
-            $carts[$product_id] = [
-                'name' => $product->name,
-                'price' => $product->price,
-                'price_sale' => $product->price_sale,
-                'thumb' => $product->thumb,
-                'qty' => $qty
-            ]; // Thêm sản phẩm mới vào giỏ
+            $carts[$product_id] = $carts[$product_id] + $qty;
+            Session::put('carts', $carts);
+            return true;
         }
-    
-        Session::put('carts', $carts); // Lưu lại giỏ hàng vào session
+
+        $carts[$product_id] = $qty;
+        Session::put('carts', $carts);
+
         return true;
     }
-    
 
     public function getProduct()
     {
-        $carts = Session::get('carts', []); // Đảm bảo session có giá trị mặc định là mảng rỗng
-    if (empty($carts)) return []; // Nếu không có sản phẩm, trả về mảng rỗng
+        $carts = Session::get('carts');
+        if (empty($carts)) return [];
 
-    $productId = array_keys($carts);
-    return Product::select('id', 'name', 'price', 'price_sale', 'thumb')
-        ->where('active', 1)
-        ->whereIn('id', $productId)
-        ->get();
-        
+        $productId = array_keys($carts);
+        return Product::select('id', 'name', 'price', 'price_sale', 'thumb')
+            ->where('active', 1)
+            ->whereIn('id', $productId)
+            ->get();
     }
 
     public function update($request)
@@ -124,8 +118,10 @@ class CartService
             ->get();
 
         $data = [];
+        $user_id = auth()->id();
         foreach ($products as $product) {
             $data[] = [
+                'user_id' => $user_id,
                 'customer_id' => $customer_id,
                 'product_id' => $product->id,
                 'pty'   => $carts[$product->id],
@@ -146,5 +142,16 @@ class CartService
         return $customer->carts()->with(['product' => function ($query) {
             $query->select('id', 'name', 'thumb');
         }])->get();
+        
     }
+
+    public function getProductByUserId($user_id, $perPage = 15)
+    {
+        $carts = Cart::where('user_id', $user_id)
+        ->with(['customer:id,name,phone,email', 'product:id,name,thumb'])
+        ->paginate($perPage);
+
+        return $carts; 
+    }
+
 }

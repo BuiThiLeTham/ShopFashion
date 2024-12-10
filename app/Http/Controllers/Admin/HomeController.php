@@ -5,13 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MainController extends Controller
+class HomeController extends Controller
 {
     public function index()
     {
-        
-        return view('admin.home', [
-           'title' => 'Trang Quản Trị Admin'
-        ]);
+        // Truyền giá trị $title vào view
+        return view('admin.home', ['title' => 'Trang chủ Admin']);
     }
 }

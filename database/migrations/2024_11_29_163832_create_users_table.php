@@ -28,6 +28,10 @@ class CreateUsersTable extends Migration
               ->onDelete('cascade');
         
         $table->timestamps();
+        $table->integer('status');
+        $table->string('SĐT')->nullable();
+        //$table->string('avatar');
+        $table->string('address')->nullable();
     });
 }
 

@@ -48,3 +48,58 @@ body, .main-menu > li > a, .ltext-102 {
 .btn-custom :active {
   opacity: 0.5;
 }
+/* Kiểu dáng cho profile-card */
+.profile-card {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+
+
+/* Kiểu chữ "Chào, [Tên người dùng]" */
+.profile-header {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    padding: 5px 0;
+}
+
+/* Dropdown menu */
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px 0;
+    z-index: 10;
+    width: 150px;
+}
+
+/* Hiển thị dropdown menu khi hover */
+.profile-card:hover .profile-dropdown {
+    display: block;
+}
+
+/* Kiểu dáng cho các liên kết trong menu */
+.profile-dropdown li {
+    list-style: none;
+    padding: 10px 15px;
+}
+
+.profile-dropdown li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.profile-dropdown li:hover {
+    background: #f0f0f0;
+    color: #007bff;
+}
+

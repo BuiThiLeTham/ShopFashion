@@ -36,6 +36,9 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
             'role_id' => 2,  // Gán mặc định là User
             'status' => 1, // Gán giá trị mặc định cho status
+            'SĐT' => null,
+            'birthday' => null,
+            'address' => null,
         ]);
 
         // // Đăng nhập người dùng ngay sau khi đăng ký (nếu cần)

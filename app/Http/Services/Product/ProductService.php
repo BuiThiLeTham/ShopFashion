@@ -42,5 +42,5 @@ class ProductService
 {
     return Product::where('name', 'LIKE', '%' . $query . '%')->paginate(10);
 }
-
+    
 }

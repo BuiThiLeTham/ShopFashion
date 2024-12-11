@@ -35,14 +35,32 @@
 
     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
      data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}" style="margin-right: 15px;">
-    <i class="zmdi zmdi-shopping-cart"></i>
+    <img src="/template/images/icons/trolley.png" alt="gio hang">
 </div>
 
 
     <!-- Nút Đăng nhập -->
-    <a href="{{ route('login') }}" class="btn-custom">
+    <!-- <a href="{{ route('login') }}" class="btn-custom">
     Đăng nhập
-</a>
+</a> -->
+<!-- Nút Đăng nhập -->
+@guest
+    <a href="{{ route('login') }}" class="btn-custom">
+        Đăng nhập
+    </a>
+@endguest
+
+<!-- Nút Đăng xuất -->
+@auth
+    <a href="{{ route('logout') }}" class="btn-custom"
+       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        Đăng xuất
+    </a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+@endauth
+
 
 </div>
 

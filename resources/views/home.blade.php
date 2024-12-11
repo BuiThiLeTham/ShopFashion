@@ -55,8 +55,21 @@
                         Tất Cả Sản Phẩm
                     </button>
                 </div>
-            </div>
+            
+                <div class="bor8 dis-flex p-l-15">
+    <form action="/search" method="GET" class="w-full">
+        <div class="dis-flex">
+            <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04" type="submit">
+                <i class="zmdi zmdi-search"></i>
+            </button>
+            <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="query" placeholder="Search">
+        </div>
+    </form>
+</div>
 
+                </div>
+            </div>
+            
             <div id="loadProduct">
                 @include('products.list')
             </div>

@@ -12,7 +12,9 @@ use App\Http\Controllers\Admin\User01Controller;
 use App\Http\Controllers\Admin\Users\ForgotPasswordController;
 use App\Http\Controllers\Admin\Users\RegisterController;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
 
+Auth::routes(); // Đảm bảo sử dụng route đăng nhập/đăng xuất mặc định.
 // Route để đăng xuất
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -117,3 +119,6 @@ Route::post('carts', [App\Http\Controllers\CartController::class, 'addCart']);
 Route::get('admin/users/register', [RegisterController::class, 'index'])->name('register');
 Route::post('admin/users/register', [RegisterController::class, 'register']);
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

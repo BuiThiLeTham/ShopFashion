@@ -18,6 +18,7 @@
         <div class="mb-3">
             <label for="password" class="form-label">Mật khẩu mới (nếu thay đổi)</label>
             <input type="password" name="password" id="password" class="form-control">
+            <small class="form-text text-muted">Để trống nếu không muốn thay đổi mật khẩu.</small>
         </div>
 
         <div class="mb-3">

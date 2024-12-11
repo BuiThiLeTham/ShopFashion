@@ -12,39 +12,39 @@
     });
 </script>
 <style>
-   #user-options {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    text-align: center; /* Căn giữa tất cả các mục trong danh sách */
+    /* Button Website */
+/* Căn chỉnh chung */
+#user-options .nav-item {
+    text-align: center; /* Căn giữa các phần tử trong danh sách */
 }
 
-#user-options .nav-item, .nav-link {
-    border-top: 1px solid #ccc; /* Thêm đường viền giữa các mục */
+/* Button Website */
+#user-options .website-btn {
+    background: transparent; /* Nền trong suốt */
+    color: white; /* Chữ màu trắng */
+    width: 100px;
+    border-radius: 5px; /* Bo tròn góc */
+    text-decoration: none; /* Xóa gạch chân */
+    display: inline-block; /* Định dạng kiểu nút */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */
 }
 
-#user-options .nav-link {
-    padding: 10px;
-    text-decoration: none;
-    color: #ffffff; /* Màu chữ trắng */
-    background-color: #343a40; /* Màu nền tối cho các mục */
-    border-radius: 5px;
-    display: block;
-    margin: 5px auto; /* Căn giữa và có khoảng cách giữa các mục */
-    width: 100%; /* Điều chỉnh chiều rộng của các mục */
+#user-options .website-btn:hover {
+    background: rgba(255, 255, 255, 0.2); /* Nền nhấn nhẹ */
 }
 
-#user-options .nav-link:hover {
-    background-color: #007bff; /* Màu nền khi hover */
-    color: #fff; /* Màu chữ khi hover */
+/* Button Đăng Xuất */
+#user-options .logout-btn {
+    background: transparent; /* Nền trong suốt */
+    color: white; /* Chữ màu trắng */
+    width: 100px;
+    border-radius: 5px; /* Bo tròn góc */
+    cursor: pointer; /* Con trỏ dạng nhấn */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */
 }
-#user-options .nav-link button {
-    background-color: transparent;
-    border: none;
-    color: inherit;
-    font-size: inherit;
-    padding: 0;
-    cursor: pointer;
+
+#user-options .logout-btn:hover {
+    background: rgba(255, 255, 255, 0.2); /* Nền nhấn nhẹ */
 }
 
 </style>
@@ -69,22 +69,22 @@
     </a>
     <ul class="nav nav-treeview" id="user-options" style="display: none;">
     <li class="nav-item">
-            <!-- Chuyển đến Website -->
-            <a href="http://127.0.0.1:8000" class="nav-link">   
-                Website
-            </a>
-        </li>
-        <li class="nav-item">
-            <!-- Đăng xuất -->
-            <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                @csrf
-                <button type="submit" class="nav-link">
-                    Đăng Xuất
-                </button>
-            </form>
-        </li>
-        
-    </ul>
+        <!-- Chuyển đến Website -->
+        <a href="http://127.0.0.1:8000" class="nav-link website-btn">   
+            Website
+        </a>
+    </li>
+    <li class="nav-item">
+        <!-- Đăng xuất -->
+        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+            @csrf
+            <button type="submit" class="nav-link logout-btn">
+                Đăng Xuất
+            </button>
+        </form>
+    </li>
+</ul>
+
 </div>
 
 
@@ -92,15 +92,16 @@
 
         <!-- SidebarSearch Form -->
         <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
-            </div>
+    <form action="/search" method="GET" class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="text" name="query" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+            <button class="btn btn-sidebar" type="submit">
+                <i class="fas fa-search fa-fw"></i>
+            </button>
         </div>
+    </form>
+</div>
+
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">

@@ -3,11 +3,11 @@
 @section('content')
     <div class="container p-t-80">
         <h1 class="mtext-105 cl2 p-b-20">
-            Search Results for "{{ $query }}"
+        Kết quả tìm kiếm cho "{{ $query }}"
         </h1>
         <div class="row">
             @if($products->isEmpty())
-                <p>No products found matching your query.</p>
+                <p>Không tìm thấy sản phẩm nào phù hợp.</p>
             @else
                 @foreach($products as $product)
                     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35">

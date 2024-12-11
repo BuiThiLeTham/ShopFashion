@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\User\UserService;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 class User01Controller extends Controller
 {
     protected $userService;
@@ -75,26 +76,41 @@ class User01Controller extends Controller
         ]);
     }
     // Cập nhật thông tin người dùng
-public function update(Request $request, $id)
-{
-    $user = User::find($id);
 
-    if (!$user) {
-        Session::flash('error', 'Người dùng không tồn tại.');
+    public function update(Request $request, $id)
+    {
+        $user = User::find($id);
+    
+        if (!$user) {
+            Session::flash('error', 'Người dùng không tồn tại.');
+            return redirect()->route('admin.user01.list');
+        }
+    
+        // Xác thực dữ liệu
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:6|confirmed', // Kiểm tra mật khẩu nếu có
+            'roleid' => 'required|in:1,2',
+        ]);
+    
+        // Cập nhật các thông tin khác
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->roleid = $request->roleid;
+    
+        // Kiểm tra và mã hóa mật khẩu nếu có thay đổi
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+    
+        $user->save();
+    
+        // Thông báo và chuyển hướng
+        Session::flash('success', 'Cập nhật người dùng thành công.');
         return redirect()->route('admin.user01.list');
     }
-
-    $this->validate($request, [
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users,email,' . $id,
-        'roleid' => 'required|in:1,2',
-    ]);
-
-    $user->update($request->all());
-    Session::flash('success', 'Cập nhật người dùng thành công.');
-    return redirect()->route('admin.user01.list');
-}
-
+    
     // Xóa người dùng
 public function destroy($id)
 {

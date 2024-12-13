@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\User01;
 use Illuminate\Http\Request;
 use App\Http\Services\User\UserService;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Sessionession;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+
 class User01Controller extends Controller
 {
     protected $userService;
@@ -33,7 +35,7 @@ class User01Controller extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:6',
-            'roleid' => 'required|in:1,2',
+            'role_id' => 'required|in:1,2',
         ]);
 
         $this->userService->insert($request);
@@ -75,61 +77,61 @@ class User01Controller extends Controller
             'user' => $user
         ]);
     }
-    // Cập nhật thông tin người dùng
+      // Cập nhật thông tin người dùng
 
-    public function update(Request $request, $id)
-    {
-        $user = User::find($id);
-    
-        if (!$user) {
-            Session::flash('error', 'Người dùng không tồn tại.');
-            return redirect()->route('admin.user01.list');
-        }
-    
-        // Xác thực dữ liệu
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'password' => 'nullable|string|min:6|confirmed', // Kiểm tra mật khẩu nếu có
-            'roleid' => 'required|in:1,2',
-        ]);
-    
-        // Cập nhật các thông tin khác
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->roleid = $request->roleid;
-    
-        // Kiểm tra và mã hóa mật khẩu nếu có thay đổi
-        if ($request->filled('password')) {
-            $user->password = Hash::make($request->password);
-        }
-    
-        $user->save();
-    
-        // Thông báo và chuyển hướng
-        Session::flash('success', 'Cập nhật người dùng thành công.');
-        return redirect()->route('admin.user01.list');
-    }
-    
-    // Xóa người dùng
-public function destroy($id)
-{
-    $user = User::find($id);
-
-    if (!$user) {
-        return response()->json([
-            'error' => true,
-            'message' => 'Người dùng không tồn tại.'
-        ]);
-    }
-
-    $user->delete();
-
-    return response()->json([
-        'error' => false,
-        'message' => 'Xóa người dùng thành công.'
-    ]);
-}
-
+      public function update(Request $request, $id)
+      {
+          $user = User::find($id);
+      
+          if (!$user) {
+              Session::flash('error', 'Người dùng không tồn tại.');
+              return redirect()->route('admin.user01.list');
+          }
+      
+          // Xác thực dữ liệu
+          $this->validate($request, [
+              'name' => 'required|string|max:255',
+              'email' => 'required|email|unique:users,email,' . $id,
+              'password' => 'nullable|string|min:6|confirmed', // Kiểm tra mật khẩu nếu có
+              'role_id' => 'required|in:1,2',
+          ]);
+      
+          // Cập nhật các thông tin khác
+          $user->name = $request->name;
+          $user->email = $request->email;
+          $user->role_id = $request->role_id;
+      
+          // Kiểm tra và mã hóa mật khẩu nếu có thay đổi
+          if ($request->filled('password')) {
+              $user->password = Hash::make($request->password);
+          }
+      
+          $user->save();
+      
+          // Thông báo và chuyển hướng
+          Session::flash('success', 'Cập nhật người dùng thành công.');
+          return redirect()->route('admin.user01.list');
+      }
+      
+      // Xóa người dùng
+  public function destroy($id)
+  {
+      $user = User::find($id);
+  
+      if (!$user) {
+          return response()->json([
+              'error' => true,
+              'message' => 'Người dùng không tồn tại.'
+          ]);
+      }
+  
+      $user->delete();
+  
+      return response()->json([
+          'error' => false,
+          'message' => 'Xóa người dùng thành công.'
+      ]);
+  }
+  
 
 }

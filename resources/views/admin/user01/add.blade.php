@@ -24,7 +24,7 @@
 
             <div class="form-group">
                 <label>Vai Trò</label>
-                <select name="roleid" class="form-control">
+                <select name="role_id" class="form-control">
                     <option value="2">User</option>
                     <option value="1">Admin</option>
                 </select>

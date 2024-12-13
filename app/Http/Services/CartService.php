@@ -48,7 +48,7 @@ class CartService
     public function getProduct()
     {
         $carts = Session::get('carts');
-        if (is_null($carts)) return [];
+        if (empty($carts)) return [];
 
         $productId = array_keys($carts);
         return Product::select('id', 'name', 'price', 'price_sale', 'thumb')
@@ -88,7 +88,8 @@ class CartService
                 'phone' => $request->input('phone'),
                 'address' => $request->input('address'),
                 'email' => $request->input('email'),
-                'content' => $request->input('content')
+                'content' => $request->input('content'),
+                'created_at' => now(),
             ]);
 
             $this->infoProductCart($carts, $customer->id);
@@ -110,25 +111,45 @@ class CartService
     }
 
     protected function infoProductCart($carts, $customer_id)
-    {
-        $productId = array_keys($carts);
-        $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb')
-            ->where('active', 1)
-            ->whereIn('id', $productId)
-            ->get();
+{
+    $productId = array_keys($carts);
+    $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb', 'quantity')
+        ->where('active', 1)
+        ->whereIn('id', $productId)
+        ->get();
 
-        $data = [];
-        foreach ($products as $product) {
-            $data[] = [
-                'customer_id' => $customer_id,
-                'product_id' => $product->id,
-                'pty'   => $carts[$product->id],
-                'price' => $product->price_sale != 0 ? $product->price_sale : $product->price
-            ];
+    $data = [];
+    $user_id = auth()->id();
+
+    foreach ($products as $product) {
+        $qtyInCart = $carts[$product->id]; // Số lượng đặt
+
+        // Kiểm tra nếu số lượng đặt lớn hơn số lượng tồn kho
+        if ($qtyInCart > $product->quantity) {
+            // Sử dụng Session::flash để thông báo lỗi
+            Session::flash('error', "Sản phẩm {$product->name} không đủ số lượng trong kho. Hiện tại chỉ còn {$product->quantity} sản phẩm.");
+            throw new \Exception("Sản phẩm {$product->name} không đủ số lượng trong kho."); // Dừng xử lý
         }
 
-        return Cart::insert($data);
+        // Giảm số lượng sản phẩm trong kho
+        $product->quantity -= $qtyInCart;
+        $product->save();
+
+        // Chuẩn bị dữ liệu để chèn vào bảng carts
+        $data[] = [
+            'user_id' => $user_id,
+            'customer_id' => $customer_id,
+            'product_id' => $product->id,
+            'pty'   => $qtyInCart,
+            'price' => $product->price_sale != 0 ? $product->price_sale : $product->price,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ];
     }
+
+    return Cart::insert($data);
+}
+
 
     public function getCustomer()
     {
@@ -140,5 +161,16 @@ class CartService
         return $customer->carts()->with(['product' => function ($query) {
             $query->select('id', 'name', 'thumb');
         }])->get();
+        
     }
+
+    public function getProductByUserId($user_id, $perPage = 15)
+    {
+        $carts = Cart::where('user_id', $user_id)
+        ->with(['customer:id,name,phone,email', 'product:id,name,thumb'])
+        ->paginate($perPage);
+
+        return $carts; 
+    }
+
 }

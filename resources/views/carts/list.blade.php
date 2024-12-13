@@ -1,7 +1,7 @@
 @extends('main')
 
 @section('content')
-    <form class="bg0 p-t-130 p-b-85" method="post">
+    <form class="bg0 p-t-130" method="post">
         @include('admin.alert')
 
         @if (count($products) != 0)
@@ -97,33 +97,37 @@
                                     <span> VND </span>
                                 </div>
                             </div>
+                            <p style="color: red;">Lưu ý khi đặt bạn không thể hủy đơn</p>
                             <div class="flex-w flex-t bor12 p-t-15 p-b-30">
 
                                 <div class="size-100 p-r-18 p-r-0-sm w-full-ssm">
 
                                     <div class="p-t-15">
-                                        <span class="stext-112 cl8">
+                                        <h4>
+                                        <span>
                                             Thông Tin Khách Hàng
                                         </span>
-
+                                        </h4>
+                                        <br>
+                                        <p>Tên khách hàng</p>
                                         <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" placeholder="Tên khách Hàng" required>
+                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" value="{{$user->name}}" required>
                                         </div>
-
+                                        <p>Số Điện Thoại</p>
                                         <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" placeholder="Số Điện Thoại" required>
+                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" value="{{$user->SĐT}}" required>
                                         </div>
-
+                                        <p>Địa chỉ</p>
                                         <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" placeholder="Địa Chỉ Giao Hàng">
+                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" value="{{$user->address}}">
                                         </div>
-
+                                        <p>Email</p>
                                         <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" placeholder="Email Liên Hệ">
+                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" value="{{$user->email}}">
                                         </div>
-
+                                        <p>Nội dung</p>
                                         <div class="bor8 bg0 m-b-12">
-                                            <textarea class="cl8 plh3 size-111 p-lr-15" name="content"></textarea>
+                                            <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Nhập nội dung ý kiến nếu cần"></textarea>
                                         </div>
 
                                     </div>
@@ -140,5 +144,6 @@
     </form>
     @else
         <div class="text-center"><h2>Giỏ hàng trống!</h2></div>
+        <br><br>
     @endif
 @endsection

@@ -9,8 +9,61 @@
 .slick-slide {outline: none !important;}
 
 
+/* lôadmore */
+/* Container của nút Load More */
+#button-loadMore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Tạo khoảng cách phía trên */
+  padding: 10px 0; /* Tạo khoảng cách phía dưới */
+}
 
+/* Nút Load More */
+#button-loadMore a {
+  display: inline-block;
+  font-size: 16px; /* Kích thước chữ */
+  font-weight: bold; /* Tô đậm chữ */
+  color: #fff; /* Màu chữ */
+  background-color: #007bff; /* Màu nền */
+  padding: 10px 30px; /* Khoảng cách bên trong nút */
+  border-radius: 5px; /* Bo tròn góc nút */
+  border: 2px solid transparent; /* Viền nút (ẩn mặc định) */
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+}
 
+/* Hiệu ứng hover cho nút */
+#button-loadMore a:hover {
+  background-color: #0056b3; /* Thay đổi màu nền khi hover */
+  color: #fff; /* Giữ nguyên màu chữ */
+  border: 2px solid #0056b3; /* Hiển thị viền */
+  transform: translateY(-2px); /* Nhấn mạnh hiệu ứng hover bằng di chuyển */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Tăng đổ bóng */
+}
+
+/* Hiệu ứng khi click */
+#button-loadMore a:active {
+  transform: translateY(0); /* Trả nút về vị trí ban đầu khi click */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Giảm đổ bóng */
+}
+
+/* Nếu cần thêm kiểu dáng cho các trạng thái khác */
+#button-loadMore a.disabled {
+  background-color: #ccc; /* Màu nền khi bị vô hiệu hóa */
+  cursor: not-allowed; /* Thay đổi con trỏ khi bị vô hiệu hóa */
+}
+
+/* Thay đổi màu placeholder khi focus */
+textarea::placeholder {
+  color: #888; /* Màu placeholder */
+  font-size: 13px; /* Kích thước chữ */
+  font-style: italic; /* Kiểu chữ in nghiêng */
+  opacity: 0.7; /* Độ mờ cho placeholder */
+  padding-top: 10px;
+}
 
 /*//////////////////////////////////////////////////////////////////
 [ LOADDING ]*/
@@ -1090,6 +1143,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  width: 100%;
 }
 
 .rs1-slick1 .item-slick1 {
@@ -1902,6 +1956,21 @@ input.num-product::-webkit-inner-spin-button {
 [ Block2 ]*/
 .block2-pic {
   position: relative;
+  width: 270px;
+  height: 270px;
+}
+@media (max-width: 768px) {
+  .block2-pic {
+    max-width: 200px; /* Giảm kích thước tối đa trên màn hình nhỏ */
+    padding-top: 100%; /* Vẫn giữ tỷ lệ 1:1 */
+  }
+}
+
+@media (max-width: 480px) {
+  .block2-pic {
+    max-width: 150px; /* Nhỏ hơn nữa ở màn hình rất nhỏ */
+    padding-top: 100%;
+  }
 }
 
 .block2-btn {
@@ -2217,6 +2286,45 @@ input.num-product::-webkit-inner-spin-button {
   font-size: 36px;
   line-height: 1.1;
   text-transform: uppercase;
+}
+.text-red {
+  color: red;
+}
+/* Tiêu đề nổi bật */
+.stylish-title {
+  font-size: 35px; /* Tăng kích thước chữ */
+  font-weight: bold; /* Làm chữ đậm */
+  color: #e74c3c; /* Màu đỏ nổi bật */
+  font-family: 'Roboto', sans-serif; /* Chọn phông chữ hiện đại */
+  text-transform: uppercase; /* Chuyển chữ thành viết hoa */
+  letter-spacing: 2px; /* Khoảng cách giữa các chữ cái */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Thêm đổ bóng cho chữ */
+  position: relative; /* Cho phép thêm hiệu ứng */
+  display: inline-block;
+  transition: all 0.3s ease; /* Hiệu ứng khi hover */
+}
+
+/* Hiệu ứng khi hover */
+.stylish-title:hover {
+  color: #c0392b; /* Màu tối hơn khi hover */
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); /* Đổ bóng mạnh hơn */
+  transform: scale(1.1); /* Phóng to chữ */
+}
+
+/* Gạch chân hiệu ứng động */
+.stylish-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background-color: #e74c3c;
+  transition: width 0.3s ease;
+}
+
+.stylish-title:hover::after {
+  width: 100%; /* Gạch chân chạy dài khi hover */
 }
 
 .ltext-104 {

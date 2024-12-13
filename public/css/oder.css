@@ -1,0 +1,45 @@
+.container-oder {
+    height: 90vh;
+    width: 100%;
+    padding: 0 150px; /* Thêm khoảng cách 2 bên */
+    
+}
+.table {
+    width: 80%; /* Giữ chiều rộng của bảng */
+    border-collapse: collapse;
+    border-radius: 8px; /* Bo góc cho bảng */
+    overflow: hidden; /* Ẩn viền cho các góc bo */
+    
+}
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+.table th {
+    background-color: #ff6f61; /* Màu nền tiêu đề bảng */
+    color: white;
+}
+
+.table tr:hover {
+    background-color: #ffcccb; /* Màu nền khi hover */
+}
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.title {
+text-align: center; /* Căn giữa nội dung */
+
+width: 100%; /* Đảm bảo chiều rộng 100% */
+
+}
+.box-form {
+box-shadow: rgba(17, 17, 26, 0.2) 0px 4px 16px, rgba(17, 17, 26, 0.2) 0px 8px 32px;   
+margin: 110px;
+padding: 25px; 
+
+; /* Thêm khoảng cách phía trên */
+}   

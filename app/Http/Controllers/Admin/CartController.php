@@ -23,11 +23,34 @@ class CartController extends Controller
         ]);
     }
 
+    public function index_user()
+    {
+        $user_id = auth()->id(); // Lấy user_id của người dùng hiện tại
+        $customers = $this->cart->getProductByUserId($user_id);
+        // dd($customers);
+
+        return view('admin.users.order', [
+            'title' => 'Sản Phẩm Đã Đặt',
+            'customers' => $customers
+        ]);
+    }
+
     public function show(Customer $customer)
     {
         $carts = $this->cart->getProductForCart($customer);
 
         return view('admin.carts.detail', [
+            'title' => 'Chi Tiết Đơn Hàng: ' . $customer->name,
+            'customer' => $customer,
+            'carts' => $carts
+        ]);
+    }
+
+    public function show_user(Customer $customer)
+    {
+        $carts = $this->cart->getProductForCart($customer);
+
+        return view('admin.users.detail', [
             'title' => 'Chi Tiết Đơn Hàng: ' . $customer->name,
             'customer' => $customer,
             'carts' => $carts

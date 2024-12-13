@@ -1,0 +1,79 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Màu nền nhẹ nhàng */
+    color: #333;
+}
+
+.customer {
+    background-color: #ffffff; /* Màu nền trắng */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 5px solid #007bff; /* Đường viền bên trái màu xanh dương */
+}
+
+.customer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.customer li {
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold; /* Làm nổi bật thông tin */
+}
+
+.carts {
+    background-color: #ffffff; /* Màu nền trắng */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table_head {
+    background-color: #007bff; /* Màu xanh dương */
+    color: white;
+    text-transform: uppercase; /* Chữ in hoa */
+    letter-spacing: 1px; /* Khoảng cách giữa các chữ */
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table tr:hover {
+    background-color: #e9ecef; /* Màu xám nhạt khi hover */
+}
+
+.text-right {
+    text-align: right;
+    font-weight: bold;
+    color: #007bff; /* Màu xanh dương cho tổng tiền */
+}
+
+.how-itemcart1 img {
+    border-radius: 5px;
+    border: 2px solid #007bff; /* Viền xanh dương cho hình ảnh */
+    transition: transform 0.3s; /* Hiệu ứng chuyển động */
+}
+
+.how-itemcart1 img:hover {
+    transform: scale(1.05); /* Phóng to hình ảnh khi hover */
+}
+.title {
+    margin-top: 110px;
+    text-align: center;
+    text-transform: uppercase;
+    color: deeppink;
+    font-weight: bolder;
+}

@@ -14,4 +14,3 @@ class AuthController extends Controller
         return redirect('/admin/users/login'); // Chuyển hướng về trang đăng nhập
     }
 }
-?>

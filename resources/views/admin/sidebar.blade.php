@@ -12,13 +12,13 @@
     });
 </script>
 <style>
-    /* Button Website */
-/* Căn chỉnh chung */
-#user-options .nav-item {
-    text-align: center; /* Căn giữa các phần tử trong danh sách */
+   #user-options {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    text-align: center; /* Căn giữa tất cả các mục trong danh sách */
 }
 
-/* Button Website */
 #user-options .website-btn {
     background: transparent; /* Nền trong suốt */
     color: white; /* Chữ màu trắng */
@@ -29,10 +29,10 @@
     transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */
 }
 
+
 #user-options .website-btn:hover {
     background: rgba(255, 255, 255, 0.2); /* Nền nhấn nhẹ */
-}
-
+} 
 /* Button Đăng Xuất */
 #user-options .logout-btn {
     background: transparent; /* Nền trong suốt */
@@ -42,9 +42,13 @@
     cursor: pointer; /* Con trỏ dạng nhấn */
     transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */
 }
-
-#user-options .logout-btn:hover {
-    background: rgba(255, 255, 255, 0.2); /* Nền nhấn nhẹ */
+#user-options .nav-link button {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    padding: 0;
+    cursor: pointer;
 }
 
 </style>
@@ -69,7 +73,7 @@
     </a>
     <ul class="nav nav-treeview" id="user-options" style="display: none;">
     <li class="nav-item">
-        <!-- Chuyển đến Website -->
+                  <!-- Chuyển đến Website -->
         <a href="http://127.0.0.1:8000" class="nav-link website-btn">   
             Website
         </a>
@@ -84,31 +88,32 @@
         </form>
     </li>
 </ul>
-
 </div>
-
-
         </div>
 
         <!-- SidebarSearch Form -->
         <div class="form-inline">
-    <form action="/search" method="GET" class="input-group" data-widget="sidebar-search">
+      <form action="/search" method="GET" class="input-group" data-widget="sidebar-search">
         <input class="form-control form-control-sidebar" type="text" name="query" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
             <button class="btn btn-sidebar" type="submit">
                 <i class="fas fa-search fa-fw"></i>
             </button>
         </div>
-    </form>
-</div>
-
+        </form>
+        </div>
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-
+                <li class="nav-item">
+                    <a href="/admin/home" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p> Trang Chủ </p>
+                    </a>
+                </li>
 
                      <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -210,7 +215,7 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-cart-plus"></i>
-                        <p> Giỏ Hàng
+                        <p> Đơn Hàng
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>

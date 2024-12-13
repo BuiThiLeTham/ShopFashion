@@ -1,0 +1,102 @@
+body {
+    background: linear-gradient(to right, #ffccbc, #d1c4e9), url('path/to/your/background-image.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+
+.login-logo a {
+    font-size: 28px;
+    color: #d32f2f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 2px solid #ff5722;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #ff9800;
+    box-shadow: 0 0 5px rgba(255, 152, 0, 0.5);
+}
+
+.btn-primary {
+    background-color: #ff4081;
+    border-color: #ff4081;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #f50057;
+    border-color: #f50057;
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+
+.card {
+    border: none;
+}
+/* Bố cục tổng */
+.login-container {
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 15px;
+flex-direction: row-reverse;
+padding: 0 10px;
+height: 100vh;
+gap: 100px; /* Thêm khoảng cách giữa form và ảnh */
+
+}
+
+/* Phần ảnh */
+.image-container {
+flex: 1;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.image-container img {
+    width: 100%; /* Tăng chiều rộng ảnh */
+    height: 100%; /* Tăng chiều cao để khớp với form */
+    object-fit: cover; /* Giữ cho ảnh không bị méo */
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Phần form */
+.login-box {
+flex: 1;
+width: 400px; /* Đảm bảo form co giãn */
+height: 60%; /* Chiều cao khớp với ảnh */
+background: rgba(255, 255, 255, 0.8);
+padding: 20px;
+border-radius: 15px;
+border-radius: 15px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Thêm điều chỉnh bên trong */
+.card-body {
+padding: 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+height: 60%;
+}
+
+input, button {
+height: 45px; /* Đồng nhất chiều cao các input */
+}

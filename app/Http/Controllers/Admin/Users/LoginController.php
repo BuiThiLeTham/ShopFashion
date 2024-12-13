@@ -30,10 +30,10 @@ class LoginController extends Controller
             $user = Auth::user();
     
             // Kiểm tra roleid
-            if ($user->roleid == 1) {
+            if ($user->role_id == 1) {
                 return redirect()->route('admin'); // Trang dashboard cho admin
-            } elseif ($user->roleid == 2) {
-                return redirect('/'); // Trang chủ cho user
+            } elseif ($user->role_id == 2) {
+                return redirect()->route('home1'); // Trang chủ cho user
             }
     
             // Trường hợp không xác định roleid

@@ -9,7 +9,7 @@
 
                 @foreach($sliders as $slider)
 
-                    <div class="item-slick1" style="background-image: url({{ $slider->thumb }});">
+                    <div class="item-slick1" style="background-image: url({{ $slider->thumb }}); ">
                         <div class="container h-full">
                             <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
                                 <div class="layer-slick1  visible-false" data-appear="fadeInDown" data-delay="0">
@@ -55,21 +55,8 @@
                         Tất Cả Sản Phẩm
                     </button>
                 </div>
-            
-                <div class="bor8 dis-flex p-l-15">
-    <form action="/search" method="GET" class="w-full">
-        <div class="dis-flex">
-            <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04" type="submit">
-                <i class="zmdi zmdi-search"></i>
-            </button>
-            <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="query" placeholder="Search">
-        </div>
-    </form>
-</div>
-
-                </div>
             </div>
-            
+
             <div id="loadProduct">
                 @include('products.list')
             </div>

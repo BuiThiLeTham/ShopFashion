@@ -1,0 +1,116 @@
+.bread-crumb {
+    background-color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.bread-crumb a {
+    color: #007bff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.bread-crumb a:hover {
+    color: #0056b3;
+}
+
+.bread-crumb span {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Hộp bao quanh cả nội dung và ảnh */
+.product-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    margin-bottom: 20px;
+}
+#add-to-cart-btn {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#add-to-cart-btn:hover {
+    background-color: #0056b3;
+}
+.product-card .product-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+.product-card .product-title:hover {
+    color: #55acee;
+}
+
+/* Giá sản phẩm */
+.product-card .product-price {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 15px;
+    padding: 5px 0;
+    border-bottom: 1px dashed #ccc;
+}
+
+/* Mô tả sản phẩm */
+.product-card .product-description {
+    font-family: serif;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+/* Mô tả chi tiết sản phẩm */
+.product-detail-description {
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-detail-description h4 {
+    font-family: sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.product-detail-description p {
+    font-family: serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin: 0;
+    padding: 0 10px;
+}
+.product-box .wrap-pic-w img {
+    width: 100%;
+    max-width: 400px; 
+    height: auto;
+    margin-left: auto;
+}

@@ -27,10 +27,10 @@
         </div>
 
         <div class="mb-3">
-            <label for="roleid" class="form-label">Quyền</label>
-            <select name="roleid" id="roleid" class="form-select" required>
-                <option value="1" {{ $user->roleid == 1 ? 'selected' : '' }}>Admin</option>
-                <option value="2" {{ $user->roleid == 2 ? 'selected' : '' }}>User</option>
+            <label for="role_id" class="form-label">Quyền</label>
+            <select name="role_id" id="role_id" class="form-select" required>
+                <option value="1" {{ $user->role_id == 1 ? 'selected' : '' }}>Admin</option>
+                <option value="2" {{ $user->role_id == 2 ? 'selected' : '' }}>User</option>
             </select>
         </div>
 

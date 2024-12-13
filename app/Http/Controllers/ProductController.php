@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Services\Product\ProductService;
+use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 class ProductController extends Controller
 {
@@ -31,6 +32,7 @@ class ProductController extends Controller
 
     public function index($id = '', $slug = '')
     {
+       
         $product = $this->productService->show($id);
         $productsMore = $this->productService->more($id);
 
